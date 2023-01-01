@@ -1,6 +1,5 @@
 @import url(common/common.css);
 
-
 /* 문화재 검색 부분 - 소영작업---------------------*/
 .main-section {
   /* margin-top: 160px; */
@@ -67,7 +66,7 @@
   
   color: var(--clr-white);
   background-color: var(--clr-green);
-  opacity: 0.75;
+  opacity: 1;
 }
 .filter .pb-4.mb-2 .overflow-auto {
   padding-left: 1rem;
@@ -82,7 +81,6 @@
 .search .fi-search {
   color: var(--clr-white);
 }
-
 
 /* 문화재 검색결과 - 소영작업----------------*/
 /* 검색결과 순서 라디오 버튼 */
@@ -105,7 +103,7 @@
 .result-item1 {
   color: black !important;
   width: 304px;
-  height: 430px;
+  height: 480px;
   margin: 10px;
   border-radius: 15px;
   background-color: white;
@@ -114,11 +112,12 @@
 .re-card-img{
   width: 304px;
   height: 330px;
-  overflow:hidden;
   margin:0 auto;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   overflow: hidden;
+  text-align: center;
+  line-height: 330px;
 }
 /* 카드 이미지칸의 이미지 */
 .re-card-img img{
