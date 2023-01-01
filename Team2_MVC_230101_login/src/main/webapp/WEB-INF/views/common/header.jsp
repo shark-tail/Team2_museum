@@ -46,19 +46,15 @@
 
 
 			<%-- 검색바 --%>
-			<c:set var="searchType" value="${'name'}" />
 			<div class="col-xl-6 col-lg-9 col-md-10 mx-auto px-0">
-				<form action="${path}/searchMain" method="get"
+				<form
 					class="form-group d-block d-md-flex position-relative rounded-md-pill mb-2 mb-sm-4 mb-lg-0">
 					<div class="input-group input-group-lg">
 						<input class="form-control mx-auto" type="text"
-							placeholder="문화재를 검색하세요." id="name" name="name" value="${name}">
-							 <!-- <span
-							class="input-group-text text-muted rounded-pill pe-3"><input
-							class="fi-search"  type="submit"></input></span> -->
+							placeholder="문화재를 검색하세요."> <span
+							class="input-group-text text-muted rounded-pill pe-3"><i
+							class="fi-search"></i></span>
 					</div>
-					<button class="btn fi-search p-0 me-4" style="border:none; background:none;" 
-							type="submit"></button> 
 					<hr class="d-md-none my-2">
 				</form>
 			</div>
@@ -78,14 +74,7 @@
 							<li><a class="dropdown-item" href="${path}/collection-detail">나의 컬렉션</a></li>
 
 						</ul></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" role="button"
-						data-bs-toggle="dropdown" aria-expanded="false">테마별 안내</a>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="/mvc/themeshow">테마 보기</a></li>
-							<li><a class="dropdown-item" href="/mvc/tourMap">테마별 문화재
-									투어</a></li>
-						</ul></li>
+					<li class="nav-item dropdown"><a class="nav-link" href="${path}/tour-map">테마별 문화재 투어</a></li>
 					<li class="nav-item dropdown"><a class="nav-link"
 						href="/mvc/event-main">행사일정</a></li>
 					<li class="nav-item dropdown"><a
