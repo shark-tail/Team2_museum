@@ -125,7 +125,7 @@
 								<a href="${path}/search-detail?hno=${item.imageUrl }"><img
 									src="${item.imageUrl }" alt="Image"></a>
 							</div>
-							<div class="card-body position-relative pb-2" style="height: 130px;">
+							<div class="card-body position-relative pb-2">
 								<div class="mb-2">
 									<span class="d-table badge bg-success">${item.ccmaName}</span>
 								</div>
@@ -238,67 +238,61 @@
 					<div class="row gallery g-0">
 						<!-- Item 1-->
 						<div class="col-xl-4 col-sm-6 img-six">
-							<a href="#" class="gallery-item"> <img
-								src="${path}/resources/img/국보_국보_청자_투각칠보문뚜껑_향로.jpg" alt="문화재이미지"
+							<a href="${path}/tour-map" class="gallery-item"> <img
+								src="${path}/resources/img/themaimg/44.png" alt="문화재이미지"
 								img-responsive>
 								<div class="carousel-caption text6">
-									<h3 class="fs-6 text-white text-start">방문인증코스1</h3>
-									<h3 class="fs-6 text-white text-start">방문인증코스1</h3>
+									<h3 class="fs-6 text-white text-center">선사 지질의 길</h3>
 								</div> <span class="gallery-item-caption">문화재이미지1</span>
 							</a>
 						</div>
 						<!-- Item 2 -->
 						<div class="col-xl-4 col-sm-6 img-six">
-							<a href="#" class="gallery-item"> <img
-								src="${path}/resources/img/경복궁_근정전_내부_어좌.jpg" alt="문화재이미지"
+							<a href="${path}/tour-map" class="gallery-item"> <img
+								src="${path}/resources/img/themaimg/33.png" alt="문화재이미지"
 								img-responsive>
 								<div class="carousel-caption text6">
-									<h3 class="fs-6 text-white text-start">방문인증코스1</h3>
-									<h3 class="fs-6 text-white text-start">방문인증코스1</h3>
+									<h3 class="fs-6 text-white text-center">서원의 길</h3>
 								</div> <span class="gallery-item-caption">문화재이미지2</span>
 							</a>
 						</div>
 						<!-- Item 3 -->
 						<div class="col-xl-4 col-sm-6 img-six">
-							<a href="#" class="gallery-item"> <img
-								src="${path}/resources/img/국보_국보_청자_투각칠보문뚜껑_향로.jpg"
+							<a href="${path}/tour-map" class="gallery-item"> <img
+								src="${path}/resources/img/themaimg/77.png"
 								alt="문화재이미지3" img-responsive>
 								<div class="carousel-caption text6">
-									<h3 class="fs-6 text-white text-start">방문인증코스1</h3>
-									<h3 class="fs-6 text-white text-start">방문인증코스1</h3>
+									<h3 class="fs-6 text-white text-center">가야 문명의 길</h3>
 								</div> <span class="gallery-item-caption">문화재이미지3</span>
 							</a>
 						</div>
 						<!-- Item 4 -->
 						<div class="col-xl-4 col-sm-6 img-six">
-							<a href="#" class="gallery-item"> <img
-								src="${path}/resources/img/석굴암_본존불2.jpg" alt="문화재이미지"
+							<a href="${path}/tour-map" class="gallery-item"> <img
+								src="${path}/resources/img/themaimg/11.png" alt="문화재이미지"
 								img-responsive>
 								<div class="carousel-caption text6">
-									<h3 class="fs-6 text-white text-start">방문인증코스1</h3>
-									<h3 class="fs-6 text-white text-start">방문인증코스1</h3>
+									<h3 class="fs-6 text-white text-center">백제고도의 길</h3>
 								</div> <span class="gallery-item-caption">문화재이미지</span>
 							</a>
 						</div>
 						<!-- Item 5 -->
 						<div class="col-xl-4 col-sm-6 img-six">
-							<a href="#" class="gallery-item"> <img
-								src="${path}/resources/img/경복궁_근정전_내부_어좌.jpg"
+							<a href="${path}/tour-map" class="gallery-item"> <img
+								src="${path}/resources/img/themaimg/22.png"
 								alt="Gallery thumbnail" img-responsive>
 								<div class="carousel-caption text6">
-									<h3 class="fs-6 text-white text-start">방문인증코스1</h3>
-									<h3 class="fs-6 text-white text-start">방문인증코스1</h3>
+									<h3 class="fs-6 text-white text-center">방문인증코스1</h3>
 								</div> <span class="gallery-item-caption">문화재이미지</span>
 							</a>
 						</div>
 						<!-- Item 6 -->
 						<div class="col-xl-4 col-sm-6 img-six">
-							<a href="#" class="gallery-item"> <img
-								src="${path}/resources/img/석굴암_본존불2.jpg" alt="문화재이미지"
+							<a href="${path}/tour-map" class="gallery-item"> <img
+								src="${path}/resources/img/themaimg/55.png" alt="문화재이미지"
 								img-responsive>
 								<div class="carousel-caption text6">
-									<h3 class="fs-6 text-white text-start">방문인증코스1</h3>
-									<h3 class="fs-6 text-white text-start">방문인증코스1</h3>
+									<h3 class="fs-6 text-white text-center">설화와 자연의 길</h3>
 								</div> <span class="gallery-item-caption">문화재이미지</span>
 							</a>
 						</div>
