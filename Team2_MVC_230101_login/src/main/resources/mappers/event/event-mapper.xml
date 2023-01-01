@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.multi.mvc.event.model.mapper.EventMapper">
+
+	<resultMap type="Event" id="eventResultMap">
+        <id property="e_no" column="E_NO"/>
+        <result property="subTitle" column="subTitle"/>
+        <result property="subContent" column="subContent"/>
+        <result property="sdate" column="sDate"/>
+        <result property="edate" column="eDate"/>
+        <result property="subDesc" column="subDesc"/>
+        <result property="subDesc1" column="subDesc1"/>
+        <result property="image" column="image"/>
+        <result property="sido" column="sido"/>
+        <result property="gogun" column="gogun"/>
+        <result property="subDate" column="subDate"/>
+    </resultMap>
+    
+
+
+	<select id="selectEventCount" resultType="int" parameterType="map">
+		SELECT COUNT(*) FROM EVENT 
+		WHERE 1=1
+		<if test="searchValue != null">
+			AND subTitle like '%${searchValue}%' 
+		</if>		
+	</select>
+
+	<select id="selectEventList" resultMap="eventResultMap" parameterType="map">
+		SELECT * FROM EVENT 
+		WHERE 1=1
+		<if test="searchValue != null">
+		AND subTitle like '%${searchValue}%' 
+		</if>		
+		ORDER BY e_no DESC LIMIT ${limit} OFFSET ${offset}
+	</select>
+
+	<select id="selectEventById" resultType="Event" parameterType="int">
+		SELECT * FROM EVENT 
+		WHERE e_no = #{e_no}
+	</select>
+	
+
+</mapper>
