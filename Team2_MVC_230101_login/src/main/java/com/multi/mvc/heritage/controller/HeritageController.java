@@ -68,9 +68,9 @@ public class HeritageController {
 		map.put("name", name);
 		map.put("nameType", nameType);
 		int count = heritageService.getHeritageCount(map);
+		
 		PageInfo pageInfo = new PageInfo(pageNum, 5, count, 12);
 		List<Heritage> list = heritageService.getHeritageList(pageInfo, map);
-		
 		model.addAttribute("list", list);
 		model.addAttribute("pageInfo", pageInfo);
 		return "/search/searchMain";
@@ -78,8 +78,8 @@ public class HeritageController {
 	
 	@RequestMapping("/searchDetail")
 	public String searchDetail(Model model, int hno) {
-		int like = heritageService.checkHeritageLike(hno);
 		Heritage heritage = heritageService.findByNo(hno);
+		int like = heritageService.checkHeritageLike(hno);
 		if(heritage == null) {
 			return "redirect:error";
 		}
@@ -158,6 +158,7 @@ public class HeritageController {
 				@SessionAttribute(name = "loginMember", required = false) Member loginMember,
 				@ModelAttribute HReply reply
 				) {
+			reply.setUno(loginMember.getNo());
 			log.info("리플 작성 요청 Reply : " + reply);
 			
 			int result = heritageService.saveReply(reply);
