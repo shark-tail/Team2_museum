@@ -34,10 +34,11 @@
       <div class="jarallax-img img-main" style="background-image: url(${path}/resources/img/경복궁_근정전_전경.jpg);"></div>
       <!-- 컬렉션 제목 및 기타 버튼 -->
       <div class="colltection-title content-overlay">
-        <h1 class="mb-5 text-white">유저 닉네임 넘어오는곳</h1>
+        <h1 class="mb-5 text-white">${nick}님의 컬렉션</h1>
         <div class="btn-group d-flex justify-content-between">
           <a class="btn btn-primary btn-sm rounded-pill" href="/mvc/collection_view" role="button">전체모드로 보기</a>
         </div>
+       </div>
     </section>
 
     <!-- 컬렉션 내 문화재 -->
@@ -50,7 +51,7 @@
           <button class="btn btn-primary" type="button">전체 삭제</button>
         </div>
       </div>
-      
+    </section>
 
       <!-- 문화재 목록 -->
       <div class="pt-4 d-flex justify-content-center align-content-start flex-wrap">
@@ -64,10 +65,10 @@
 	          </div>
 	          <!-- 문화재 -->
 	          <div class="re-card-img">
-	            <a href="${path}/searchDetail?hno=${item.hno}"><img src="${item.imageUrl }" alt="Image"></a>
+	            <a href="${path}/searchDetail?hno=${item.hno}"><img src="${item.imageUrl}" alt="Image"></a>
 	          </div>
 	          <div class="d-flex justify-content-between sn-box1">
-	            <div class="mt-1"><span class="fs-5"><a class="nav-link" href="${path}/searchDetail?hno=${item.hno}">${item.ccbaMnm1 }</a></span></div>
+	            <div class="mt-1"><span class="fs-5"><a class="nav-link" href="${path}/searchDetail?hno=${item.hno}">${item.ccbaMnm1}</a></span></div>
 	            <div class="pt-3 pe-3 fs-xs"><span class="text-muted"><i class="fi-map-pin mt-n1 me-1 fs-base text-muted align-middle"></i>${item.ccbaLcad }</span></div>
 	          </div>
 	          <!--좋아요, 컬렉션-->
