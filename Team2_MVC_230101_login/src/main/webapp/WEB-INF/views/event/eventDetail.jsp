@@ -98,8 +98,15 @@ keyframes spinner { 100% {
         }, 2000);
       };
     })();
+    
+    
+    function reserve()  {
+    	  alert('예매됐습니다.');
+    	}
 
   </script>
+  
+  
 
 <!-- Vendor Styles-->
 <link rel="stylesheet" media="screen"
@@ -194,7 +201,7 @@ keyframes spinner { 100% {
 										</h4>
 									</div>
 									<div class="col bih-s-4">
-										<a class="btn btn-primary btn-lg rounded-pill" href="#">&nbsp;&nbsp;&nbsp;예약&nbsp;&nbsp;&nbsp;<i
+										<a class="btn btn-primary btn-lg rounded-pill" onclick='reserve()' href="#">&nbsp;&nbsp;&nbsp;예매&nbsp;&nbsp;&nbsp;<i
 											class="fi-chevron-right fs-sm ms-2"></i></a>
 									</div>
 								</div>
@@ -310,16 +317,16 @@ function displayMarker(place) {
 						<div class="position-relative">
 							<div class="position-relative mb-3">
 								<img class="rounded-3 bih-s-5"
-									src="${path}/resources/img/event/event1.jpg" alt="Article img">
+									src="${path}/resources/img/event/event6.jpg" alt="Article img">
 							</div>
 							<h3 class="mb-2">
-								<a class="nav-link stretched-link" href="${path}/event-detail?no=1">종가의 정성</a>
+								<a class="nav-link stretched-link" href="${path}/event-detail?no=6">찾아가는향교</a>
 							</h3>
 							<h3 class="mb-2">
 								<a class="nav-link bih-f-7">2022.11.01-2022.11.30</a>
 							</h3>
 							<h3 class="mb-2">
-								<a class="nav-link bih-f-7">충청남도 논산시</a>
+								<a class="nav-link bih-f-7">강원도 정선군 </a>
 							</h3>
 						</div>
 					</div>
@@ -328,10 +335,27 @@ function displayMarker(place) {
 						<div class="position-relative">
 							<div class="position-relative mb-3">
 								<img class="rounded-3 bih-s-5"
-									src="${path}/resources/img/event/event2.jpg" alt="Article img">
+									src="${path}/resources/img/event/event5.jpg" alt="Article img">
 							</div>
 							<h3 class="mb-2">
-								<a class="nav-link stretched-link" href="${path}/event-detail?no=2">에헴!이리오너라 향교나들이</a>
+								<a class="nav-link stretched-link" href="${path}/event-detail?no=5">제 9회 세종 단오제</a>
+							</h3>
+							<h3 class="mb-2">
+								<a class="nav-link bih-f-7">2022.11.01-2022.11.30</a>
+							</h3>
+							<h3 class="mb-2">
+								<a class="nav-link bih-f-7">경기도 세종시</a>
+							</h3>
+						</div>
+					</div>
+					<!-- Item-->
+					<div>
+						<div class="position-relative">
+							<div class="position-relative mb-3">
+							   <img class="rounded-3 bih-s-5" src="${path}/resources/img/event/event2.jpg" alt="Article img">
+							</div>
+							<h3 class="mb-2">
+								<a class="nav-link stretched-link" href="${path}/event-detail?no=2">에헴! 이리오너라 향교나들이</a>
 							</h3>
 							<h3 class="mb-2">
 								<a class="nav-link bih-f-7">2022.11.01-2022.11.30</a>
@@ -345,33 +369,16 @@ function displayMarker(place) {
 					<div>
 						<div class="position-relative">
 							<div class="position-relative mb-3">
-							   <img class="rounded-3 bih-s-5" src="${path}/resources/img/event/event3.jpg" alt="Article img">
+								<img class="rounded-3 bih-s-5" src="${path}/resources/img/event/event3.jpg">
 							</div>
 							<h3 class="mb-2">
-								<a class="nav-link stretched-link" href="${path}/event-detail?no=3">찾아가는향교</a>
+								<a class="nav-link stretched-link" href="${path}/event-detail?no=3">종가의 정성</a>
 							</h3>
 							<h3 class="mb-2">
 								<a class="nav-link bih-f-7">2022.11.01-2022.11.30</a>
 							</h3>
 							<h3 class="mb-2">
-								<a class="nav-link bih-f-7">강원도 정선군</a>
-							</h3>
-						</div>
-					</div>
-					<!-- Item-->
-					<div>
-						<div class="position-relative">
-							<div class="position-relative mb-3">
-								<img class="rounded-3 bih-s-5" src="${path}/resources/img/event/event4.jpg">
-							</div>
-							<h3 class="mb-2">
-								<a class="nav-link stretched-link" href="${path}/event-detail?no=4">법고창신 전통문화체험</a>
-							</h3>
-							<h3 class="mb-2">
-								<a class="nav-link bih-f-7">2022.11.01-2022.11.30</a>
-							</h3>
-							<h3 class="mb-2">
-								<a class="nav-link bih-f-7">경상북도 경주시</a>
+								<a class="nav-link bih-f-7">충청남도 논산시</a>
 							</h3>
 						</div>
 					</div>
