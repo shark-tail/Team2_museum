@@ -1,0 +1,23 @@
+body {
+    background-color: #000;
+}
+
+.swiper-wrapper .swiper-slide {
+    width: 250px;
+    height: 300px;
+    margin-right: 1rem;
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.swiper-wrapper .swiper-slide .d-block {
+    width: 100% !important;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    transition: all 0.2s linear;
+}
+
+.swiper-wrapper .swiper-slide .d-block:hover {
+    transform: scale(1.1);
+}

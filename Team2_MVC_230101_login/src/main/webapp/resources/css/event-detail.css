@@ -1,0 +1,117 @@
+:root {
+  --clr-green: #50604E;
+  --clr-beige: #D1CDC1;
+  --clr-orange: #FD5631;
+  --clr-yellow: #FFE922;
+  --clr-dark-gray: #677788;
+  --clr-light-gray: #F5F5F5;
+  --clr-white: #fff;
+}
+hr{
+  height: 2px !important;
+  color: var(--clr-green);
+}
+.card{
+  border: 2px solid #50604E !important;
+}
+
+/* Home>행사 일정>행사 상세 */
+.breadcrumb{
+  font-size: 27px;
+}
+
+/* 행사 사진 */
+.pic{
+  float: left;
+  width: 50%;
+}
+.pic >img{
+  width: 620px;
+}
+
+/* 행사제목 */
+.bih-f-1{
+  margin-top: 10px;
+  font-size: 40px;
+}
+
+/* 행사 정보 */
+.card py-2 px-sm-4 px-3 shadow-sm{
+  float: right;
+}
+.bih-f-2{
+  font-size: 40px;
+  padding-bottom: 20px;
+}
+.bi-bank{
+  margin-right: 10px;
+}
+.bih-f-3{
+  font-size: 30px;
+}
+.bih-s-1{
+  height: 780px;
+}
+.col{
+  margin-bottom: 30px;
+}
+.bih-s-2{
+  margin-bottom: 200px;
+}
+.fs-4{
+  font-size: 30px !important;
+}
+.bih-s-3{
+  margin-top: 25px;
+}
+.bih-s-4{
+  margin-top: 10px;
+}
+.btn-primary{
+  font-size: 28px;
+}
+
+
+/* 행사안내 */
+.bih-f-4{
+  font-weight: 900;
+  font-size: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.bih-f-5{
+  font-size: 30px;
+}
+
+/* 지도 */
+.bi-geo-alt-fill{
+  color: #FD5631;
+}
+.map{
+  font-size: 30px;
+}
+
+
+/* 유사행사 */
+.bih-f-6{
+  padding-top: 40px;
+}
+.bih-f-7{
+  font-weight:200 !important;
+}
+.bih-s-5 {
+  width: 440px !important;
+  height: 220px !important;
+  object-fit: cover;
+}
+
+.lg-close:after {
+  /* content:'\e070' */
+  content: 'X' !important;
+}
+
+
+
+
+
+

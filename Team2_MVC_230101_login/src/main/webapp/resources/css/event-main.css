@@ -1,0 +1,56 @@
+:root {
+  --clr-green: #50604E;
+  --clr-beige: #D1CDC1;
+  --clr-orange: #FD5631;
+  --clr-yellow: #FFE922;
+  --clr-dark-gray: #677788;
+  --clr-light-gray: #F5F5F5;
+  --clr-white: #fff;
+}
+
+/* 겹치기  */
+.bg-1{
+  position: relative;
+}
+.bg-2{
+  position: relative;
+  top: -90px;
+}
+
+/* 검색 */
+.form-group{
+  margin-bottom: 40px;
+}
+
+/* 행사 1칸 테두리 */
+.position-relative1{
+  border: 2px solid #D1CDC1;
+}
+
+/* 사진크기 */
+img {
+  width: 383px;
+  height: 240px;
+  object-fit: cover;
+}
+
+/* 행사내용 패딩 */
+.bih-p-1{
+  padding-left: 20px;
+}
+.bih-m-1{
+  margin-bottom: 20px;
+}
+.fi-arrow-long-right{
+  padding-bottom: 3px;
+}
+.nav-link:hover, .nav-link:focus {
+  color: #454056 !important;
+}
+
+/* 페이지 넘버링 */
+.bih-m-2{
+  margin-left: 500px;
+  margin-top: 100px;
+}
+

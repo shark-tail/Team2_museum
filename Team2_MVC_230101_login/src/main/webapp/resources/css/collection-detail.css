@@ -1,0 +1,106 @@
+@import url(common/common.css);
+
+
+/* 컬렉션 헤더 ㅡㅡㅡㅡㅡ */
+.colltection-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-content: center;
+  max-width: 1080px;
+  height: inherit;
+  padding-bottom: 5rem;
+  margin: 0 auto;
+}
+.colltection-title .btn-group button,
+.colltection-title .btn-group a {
+  flex: 0;
+  margin: 0;
+  border-radius: 0.5rem !important;
+}
+
+
+/* 컬렉션 내 문화재 목록 ㅡㅡㅡㅡㅡ */
+/* 선택이동, 전체삭제 버튼 */
+.del-btn button {
+  font-weight: 400;
+}
+
+/* 문화재 검색 결과 */
+.result-item1 {
+  position: relative;
+  color: black !important;
+  width: 275px;
+  height: 375px;
+  margin: 10px;
+  border-radius: 15px;
+  background-color: white;
+}
+
+/* 체크박스 */
+.del-check input {
+  accent-color: var(--clr-orange);
+  position: absolute;
+  top: 5.5%;
+  right: 7.5%;
+  transform: scale(2);
+  z-index: 100;
+}
+.del-check span {
+  border-radius: 15px;
+}
+
+/* 카드 이미지칸 */
+.re-card-img{
+  width: 100%;
+  height: 275px;
+  overflow:hidden;
+  margin:0 auto;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  overflow: hidden;
+}
+
+/* 카드 이미지칸의 이미지 */
+.re-card-img img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.re-card-img img:hover{
+filter: brightness(60%);
+}
+/* 문화재명, 주소칸 */
+.sn-box1{
+vertical-align: bottom;
+width: 100%;
+height: 50px;
+font-size: 1rem;
+}
+/* 좋아요, 컬렉션칸 */
+.b2-box {
+/* vertical-align: middle !important; */
+/* vertical-align: middle; */
+width: 100%px;
+height: 55px;
+font-size: 1rem;
+}
+/* 좋아요, 컬렉션 각각칸 */
+.b2-box-ch {
+width: 140px;
+height: 50px;
+}
+
+
+/* 컬렉션 댓글 ㅡㅡㅡㅡㅡ */
+.reply .btn-primary {
+    font-size: 0.8rem;
+    color: var(--clr-black);
+    border: 1px solid var(--clr-beige);
+    background-color: var(--clr-beige);
+}
+.more-reply {
+    font-size: 1.5rem;
+    border: none;
+    background-color: transparent;
+}

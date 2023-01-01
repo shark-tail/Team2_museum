@@ -1,0 +1,62 @@
+@import url(common.css);
+
+/* 컬렉션 메인 */
+/* 컬렉션검색칸 */
+.col-sch-form {
+  width: 600px;
+  height: 48px !important;
+}
+.col-sch-input {
+  /* width: 800px; */
+  height: 35px !important;
+  font-size: 1rem !important;
+  margin-top: 2px;
+
+}
+.col-sch-btn {
+  /* accent-color: var(--clr-orange); */
+  background-color: var(--clr-orange);
+  border: 0;
+}
+/* 주간 컬렉션 */
+.col-main-box img {
+  width: 100% !important;
+  height: 400px !important;
+  object-fit: cover;
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+}
+/* 이달의 수집가 */
+.month-pp img{
+  width: 160px !important;
+  height: 160px !important;
+  filter: drop-shadow(10px 6px 6px #c3c3c3);
+  object-fit: cover;
+}
+.month-col img{
+  width: 220px !important;
+  height: 220px !important;
+  object-fit: cover;
+}
+.month-col-list {
+  margin-top: 8px;
+}
+.month-col-list img{
+  width: 240px !important;
+  height: 220px !important;
+  border-radius: 50px;
+  object-fit: cover;
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;  */
+  filter: drop-shadow(10px 6px 6px #c3c3c3);
+}
+
+/* 주간 top50, 지금 뜨는 컬렉션 */
+.col-top-pp img{
+  width: 44px !important;
+  height: 44px !important;
+  object-fit: cover;
+}
+.col-top-img {
+  width: 100% !important;
+  height: 220px !important;
+  object-fit: cover;
+}

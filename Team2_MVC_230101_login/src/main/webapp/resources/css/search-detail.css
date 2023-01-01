@@ -1,0 +1,62 @@
+@import url(common.css);
+
+/* 인화님 작업 */
+
+/* 지도/댓글 ~ 유사문화재 사이 마진 */
+.bih-mg{
+    margin-top: 60px;
+}
+
+/* 지도/댓글 크기 비율 */
+.col-md-bih1 {
+    width: 38% !important;
+}
+
+.col-md-bih2 {
+    width: 62% !important;
+}
+
+/* 유사문화재 이미지 크기 */
+.size-bih {
+    width: 300px !important;
+    height: 300px !important;
+    object-fit: cover;
+}
+.nav-link stretched-link2 {
+    font-weight: lighter !important;
+}
+
+
+/* 소영작업======================================= */
+/* 좋아요, 컬렉션 버튼 */
+.likebtn {
+    width: 110px;
+    height: 42px;
+    border-radius: 10px;
+    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+    /* border: 1px solid var(--clr-orange); */
+    /* background-color: rebeccapurple; */
+}
+
+/* 메인 사진 */
+.mine-pic img {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
+    /* filter: drop-shadow(10px 6px 6px #c3c3c3); 그림자 */
+}
+
+.main-p img {
+    width: 680px !important;
+    height: 500px !important;
+    object-fit: cover !important;
+    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important; */
+    /* filter: drop-shadow(10px 6px 6px #c3c3c3); 그림자 */
+}
+
+/* 작은 4개 사진칸 */
+.picture1 img {
+    width: 300px !important;
+    height: 240px !important;
+    object-fit: cover !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
+    /* filter: drop-shadow(10px 6px 6px #c3c3c3); 그림자 */
+}

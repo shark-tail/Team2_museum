@@ -1,0 +1,151 @@
+@import url(common.css);
+
+
+/* 문화재 검색 부분 - 소영작업---------------------*/
+.main-section {
+  /* margin-top: 160px; */
+  height: 400px;
+}
+/* 문화재 검색칸 문구, 입력창 div */
+.content1 {
+  padding-top: 70px;
+}
+
+/* 검색버튼 */
+.btn-search-m {
+  font-size: 1.5rem;
+  width: 200px;
+  color: white;
+  background-color: #FD5631;
+}
+/* 라디오 버튼 */
+.radio2 {
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+}
+.radio2 span {
+  vertical-align: middle;
+}
+/* 색변하는 방식 버전 2가지임.*/
+.radio2 [type="radio"] {  
+  vertical-align: middle;
+  width: 1em;
+  height: 1em;  
+  /* appearance: none;
+  background-color: white;
+  border-radius: 50%;
+  border: max(2px, 0.1em) solid var(--clr-orange);
+  transition: border 0.5s ease-in-out; */
+}
+.radio2 [type="radio"]:checked {
+  accent-color: var(--clr-orange);
+  /* border: 0.3em solid var(--clr-orange); */
+}
+
+
+/* 문화재 검색 필터 (유채원) ㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+.reset {
+  color: var(--clr-green);
+  border: 1px solid var(--clr-green);
+}
+.filter .pb-4.mb-2 {
+  width: 225px;
+  border: 1px solid var(--clr-green);
+  border-radius: 1rem;
+}
+.filter .wide .pb-4.mb-2 {
+  width: 400px;
+}
+.filter .pb-4.mb-2 h3 {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 400;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--clr-green);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  
+  color: var(--clr-white);
+  background-color: var(--clr-green);
+  opacity: 0.75;
+}
+.filter .pb-4.mb-2 .overflow-auto {
+  padding-left: 1rem;
+}
+.search {
+  font-size: 1.25rem;
+  font-weight: 400;
+  border: 1px solid var(--clr-green);
+  color: var(--clr-white);
+  background-color: var(--clr-green);
+}
+.search .fi-search {
+  color: var(--clr-white);
+}
+
+
+/* 문화재 검색결과 - 소영작업----------------*/
+/* 검색결과 순서 라디오 버튼 */
+/* a {
+  text-decoration-line : none;
+  text-decoration : none;
+} */
+.radio3 span {
+  vertical-align: middle;
+}
+.radio3 [type="radio"] {  
+  vertical-align: middle;
+  width: 1em;
+  height: 1em;  
+}
+.radio3 [type="radio"]:checked {
+  accent-color: var(--clr-orange);
+}
+/* 문화재 검색 결과 */
+.result-item1 {
+  color: black !important;
+  width: 304px;
+  height: 430px;
+  margin: 10px;
+  border-radius: 15px;
+  background-color: white;
+}
+/* 카드 이미지칸 */
+.re-card-img{
+  width: 304px;
+  height: 330px;
+  overflow:hidden;
+  margin:0 auto;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  overflow: hidden;
+}
+/* 카드 이미지칸의 이미지 */
+.re-card-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.re-card-img img:hover{
+  filter: brightness(60%);
+}
+/* 문화재명, 주소칸 */
+.sn-box1{
+  vertical-align: bottom;
+  width: 304px;
+  height: 45px;
+  font-size: 1rem;
+}
+/* 좋아요, 컬렉션칸 */
+.b2-box {
+  /* vertical-align: middle !important; */
+  /* vertical-align: middle; */
+  width: 304px;
+  height: 55px;
+  font-size: 1rem;
+}
+/* 좋아요, 컬렉션 각각칸 */
+.b2-box-ch {
+  width: 140px;
+  height: 50px;
+}

@@ -1,0 +1,219 @@
+h1 {
+    font-family: 'GmarketSansMedium';
+    color: rgb(87, 85, 85);
+}
+
+.page {
+    margin-left: 30%;
+    margin-right: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    justify-content: center;
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.logo a {
+    font-size: 55px;
+    font-family: 'Ansungtangmyun-Bold';
+    color: var(--clr-green);
+    text-decoration: none;
+}
+
+.login {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.login h1 {
+    font-size: 30px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.text_id h1 {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.text_field {
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+    font-family: 'GmarketSansMedium';
+    padding-left: 10px;
+    border: 1px solid black;
+    outline-style: none;
+    margin-bottom: 20px;
+}
+
+.text_pw h1 {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.save {
+    display: flex;
+}
+
+.save h1 {
+    font-size: 13px;
+    position: relative;
+    left: 10px;
+}
+
+input[id="checkId"]+label {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    background-color: white;
+    border: solid 1px black;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+input[id="checkId"]:checked+label {
+    background-color: white;
+    width: 13px;
+    height: 13px;
+    border: solid 5px black;
+    border-radius: 14px;
+}
+
+input[id="checkId"] {
+    display: none;
+}
+
+.login_btn {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: var(--clr-green);
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    border-color: var(--clr-green);
+}
+
+/* 링크 */
+ul.links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    height: 30px;
+}
+
+ul.links li {
+    padding: 0px 18px;
+}
+
+ul.links li a {
+    position: relative;
+    bottom: 15px;
+    font-size: 20px;
+    text-decoration: none;
+    color: rgb(87, 85, 85);
+}
+
+li {
+    list-style: none;
+    border-right: 3px solid var(--clr-green);
+}
+
+ul.links li:last-of-type {
+    border-right: 0px;
+    margin-right: 55px;
+}
+
+.simple_login {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.simple_login h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.empty_space {
+    height: 10px;
+}
+
+.large_empty {
+    height: 150px;
+}
+
+.google_btn {
+    height: 58px;
+    border-radius: 10px;
+    border: 1px solid black;
+    position: relative;
+}
+
+.naver_btn {
+    height: 60px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    border: none;
+    background-color: #03c75A;
+    position: relative;
+}
+
+.kakao_btn {
+    height: 60px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    border: none;
+    background-color: rgb(253, 220, 63);
+    position: relative;
+}
+
+
+.logo_icon {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    height: 40px;
+}
+
+.google_btn h1 {
+    color: black;
+    position: absolute;
+    left: 200px;
+    top: 15px;
+    font: normal;
+    font-size: 25px;
+    font-weight: 3;
+}
+
+.naver_btn h1 {
+    color: white;
+    position: absolute;
+    left: 190px;
+    top: 17px;
+    font: normal;
+    font-size: 25px;
+    font-weight: 3;
+}
+
+.kakao_btn h1 {
+    color: black;
+    position: absolute;
+    left: 190px;
+    top: 18px;
+    font: normal;
+    font-size: 25px;
+    font-weight: 3;
+}
