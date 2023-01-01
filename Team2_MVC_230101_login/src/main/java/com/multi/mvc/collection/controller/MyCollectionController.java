@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.multi.mvc.heritage.model.service.HeritageService;
 import com.multi.mvc.heritage.model.vo.Heritage;
@@ -25,17 +26,34 @@ public class MyCollectionController {
 	}
 	
 	@RequestMapping("/collection-detail")
-	public String myCollection(Model model, HttpSession session) {
-		Member loginMember = (Member) session.getAttribute("loginMember");
-		int uno = 1;
-		if(loginMember != null) {
-			uno = loginMember.getNo();
+	public String myCollection(Model model, 
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember
+			) {
+		int uno = loginMember.getNo();
+		if(uno == 0) {
+			return "redirect:error";
 		}
 			
 		List<Heritage> list = service.selectCollectionListByUNO(uno);
+		model.addAttribute("nick", loginMember.getNickname());
 		model.addAttribute("list", list);
 		return "collection/collection-detail";
 	}
+	
+//	@RequestMapping("/collection-detail")
+//	public String myCollection(Model model, HttpSession session) {
+//		Member loginMember = (Member) session.getAttribute("loginMember");
+//		int uno = 1;
+//		if(loginMember != null) {
+//			uno = loginMember.getNo();
+//		}
+//		
+//		List<Heritage> list = service.selectCollectionListByUNO(uno);
+//		model.addAttribute("list", list);
+//		return "collection/collection-detail";
+//	}
+	
+	
 	@RequestMapping("/collection_view")
 	public String view(Model model, HttpSession session) {
 		Member loginMember = (Member) session.getAttribute("loginMember");
@@ -47,6 +65,4 @@ public class MyCollectionController {
 		model.addAttribute("list", list);
 		return "collection/collection-view-all";
 	}
-	
-	
 }
