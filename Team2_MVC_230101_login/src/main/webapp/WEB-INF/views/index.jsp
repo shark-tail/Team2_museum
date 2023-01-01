@@ -34,6 +34,10 @@
 	href="${path}/resources/css/common/header-footer.css">
 <link rel="stylesheet" media="screen"
 	href="${path}/resources/css/index.css">
+	
+ <!-- 230102 인화추가 아이콘 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+	
 </head>
 
 <body>
@@ -142,112 +146,80 @@
 
 
 	<!-- 행사 및 기획전 -->
-	<section class="container mb-5 pb-lg-3">
-		<div
-			class="d-flex flex-column align-items-start justify-content-between mb-3">
-			<span class="event category h5 mb-2">행사 및 기획전</span>
-			<div class="w-100 d-flex align-items-center justify-content-between">
-				<h2 class="h2 mb-0">우리 문화재, 직접 보고 느껴요!</h2>
-				<a class="event more btn btn-link ms-md-3 ms-auto p-0 fw-bold"
-					href="evevt-main.html">더 보러가기<i
-					class="fi-arrow-long-right ms-2"></i></a>
-			</div>
-		</div>
-		<!-- Carousel-->
-		<div
-			class="tns-carousel-wrapper tns-controls-outside-xxl tns-nav-outside tns-center">
-			<div class="tns-carousel-inner"
-				data-carousel-options="{&quot;items&quot;: 1, &quot;edgePadding&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;controls&quot;: false, &quot;gutter&quot;: 16},&quot;500&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 16}, &quot;768&quot;: {&quot;gutter&quot;: 24}}}">
-				<!-- Item-->
-				<div>
-					<div class="card border-0 bg-size-cover pt-5"
-						style="background-image: url(${path}/resources/img/행사1.jpg);">
-						<div class="d-none d-md-block" style="height: 10rem;"></div>
-						<div class="card-body text-center text-md-start pt-4 pt-xl-0">
-							<div class="d-md-flex justify-content-between align-items-end">
-								<div class="me-2 mb-4 mb-md-0">
-									<div
-										class="d-flex justify-content-center justify-content-md-start text-light fs-sm mb-2">
-										<div class="text-nowrap me-3">
-											<i class="fi-calendar-alt me-1 opacity-70"></i><span
-												class="align-middle"> 00월 00일</span>
-										</div>
-										<div class="text-nowrap">
-											<i class="fi-clock me-1 opacity-70"></i><span
-												class="align-middle"> D - 0</span>
-										</div>
-									</div>
-									<h3 class="h2 text-light mb-0">문화재 행사1</h3>
-								</div>
-								<div class="btn-group">
-									<a class="ticket btn btn-primary rounded-pill px-5"
-										href="event-detail.html">예매하기</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Item-->
-				<div>
-					<div class="card border-0 bg-size-cover pt-5"
-						style="background-image: url(${path}/resources/img/행사3.jpg);">
-						<div class="d-none d-md-block" style="height: 10rem;"></div>
-						<div class="card-body text-center text-md-start pt-4 pt-xl-0">
-							<div class="d-md-flex justify-content-between align-items-end">
-								<div class="me-2 mb-4 mb-md-0">
-									<div
-										class="d-flex justify-content-center justify-content-md-start text-light fs-sm mb-2">
-										<div class="text-nowrap me-3">
-											<i class="fi-calendar-alt me-1 opacity-70"></i><span
-												class="align-middle"> 1월 5일</span>
-										</div>
-										<div class="text-nowrap">
-											<i class="fi-clock me-1 opacity-70"></i><span
-												class="align-middle"> D - 12</span>
-										</div>
-									</div>
-									<h3 class="h2 text-light mb-0">신나는 탈춤놀이</h3>
-								</div>
-								<div class="btn-group">
-									<a class="ticket btn btn-primary rounded-pill px-5"
-										href="event-detail.html">바로가기</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Item-->
-				<div>
-					<div class="card border-0 bg-size-cover pt-5"
-						style="background-image: url(${path}/resources/img/행사3.jpg);">
-						<div class="d-none d-md-block" style="height: 10rem;"></div>
-						<div class="card-body text-center text-md-start pt-4 pt-xl-0">
-							<div class="d-md-flex justify-content-between align-items-end">
-								<div class="me-2 mb-4 mb-md-0">
-									<div
-										class="d-flex justify-content-center justify-content-md-start text-light fs-sm mb-2">
-										<div class="text-nowrap me-3">
-											<i class="fi-calendar-alt me-1 opacity-70"></i><span
-												class="align-middle"> 00월 00일</span>
-										</div>
-										<div class="text-nowrap">
-											<i class="fi-clock me-1 opacity-70"></i><span
-												class="align-middle"> D - 0</span>
-										</div>
-									</div>
-									<h3 class="h2 text-light mb-0">문화재 행사3</h3>
-								</div>
-								<div class="btn-group">
-									<a class="ticket btn btn-primary rounded-pill px-5"
-										href="event-detail.html">예매하기</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+    <section class="container mb-5 pb-lg-3">
+      <div class="d-flex flex-column align-items-start justify-content-between mb-3">
+        <span class="event category h5 mb-2">행사 및 기획전</span>
+        <div class="w-100 d-flex align-items-center justify-content-between">
+          <h2 class="h2 mb-0">우리 문화재, 직접 보고 느껴요!</h2>
+          <a class="event more btn btn-link ms-md-3 ms-auto p-0 fw-bold" href="${path}/event-main">더 보러가기<i class="fi-arrow-long-right ms-2"></i></a>
+        </div>
+      </div>
+      <!-- Carousel-->
+      <div class="tns-carousel-wrapper tns-controls-outside-xxl tns-nav-outside tns-center">
+        <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 1, &quot;edgePadding&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;controls&quot;: false, &quot;gutter&quot;: 16},&quot;500&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 16}, &quot;768&quot;: {&quot;gutter&quot;: 24}}}">
+          <!-- Item-->
+          <div>
+            <div class="card border-0 bg-size-cover pt-5" style="background-image: url(${path}/resources/img/기획전1.jpg);">
+              <div class="d-none d-md-block" style="height: 10rem;"></div>
+              <div class="card-body text-center text-md-start pt-4 pt-xl-0">
+                <div class="d-md-flex justify-content-between align-items-end">
+                  <div class="me-2 mb-4 mb-md-0">
+                    <div class="d-flex justify-content-center justify-content-md-start text-light fs-sm mb-2">
+                      <div class="text-nowrap me-3"><i class="bi bi-people"></i><span class="align-middle"> 시민 </span></div>
+                      <div class="text-nowrap"><i class="bi bi-geo-alt"></i><span class="align-middle"> 서울특별시 용산구 국립중앙박물관 </span></div>
+                    </div>
+                    <h3 class="h2 text-light mb-0">외규장각 의궤, 그 고귀함의 의미</h3>
+                  </div>
+                  <div class="btn-group">
+                    <a class="ticket btn btn-primary rounded-pill px-5" href="${path}/event-detail?no=9">예매하기</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Item-->
+          <div>
+            <div class="card border-0 bg-size-cover pt-5" style="background-image: url(${path}/resources/img/기획전2.jpg);">
+              <div class="d-none d-md-block" style="height: 10rem;"></div>
+              <div class="card-body text-center text-md-start pt-4 pt-xl-0">
+                <div class="d-md-flex justify-content-between align-items-end">
+                  <div class="me-2 mb-4 mb-md-0">
+                    <div class="d-flex justify-content-center justify-content-md-start text-light fs-sm mb-2">
+                      <div class="text-nowrap me-3"><i class="bi bi-people"></i><span class="align-middle"> 일반시민 </span></div>
+                      <div class="text-nowrap"><i class="bi bi-geo-alt"></i><span class="align-middle"> 경상북도 경주시 경주향교</span></div>
+                    </div>
+                    <h3 class="h2 text-light mb-0">법고창신 전통문화체험</h3>
+                  </div>
+                  <div class="btn-group">
+                    <a class="ticket btn btn-primary rounded-pill px-5" href="${path}/event-detail?no=8">바로가기</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Item-->
+          <div>
+            <div class="card border-0 bg-size-cover pt-5" style="background-image: url(${path}/resources/img/기획전3.jpg);">
+              <div class="d-none d-md-block" style="height: 10rem;"></div>
+              <div class="card-body text-center text-md-start pt-4 pt-xl-0">
+                <div class="d-md-flex justify-content-between align-items-end">
+                  <div class="me-2 mb-4 mb-md-0">
+                    <div class="d-flex justify-content-center justify-content-md-start text-light fs-sm mb-2">
+                      <div class="text-nowrap me-3"><i class="bi bi-people"></i><span class="align-middle"> 어린이집 어린이 </span></div>
+                      <div class="text-nowrap"><i class="bi bi-geo-alt"></i><span class="align-middle"> 경상북도 영천시 영천향교 </span></div>
+                    </div>
+                    <h3 class="h2 text-light mb-0">에헴! 이리오너라 향교나들이</h3>
+                  </div>
+                  <div class="btn-group">
+                    <a class="ticket btn btn-primary rounded-pill px-5" href="${path}/event-detail?no=2">예매하기</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
 	<!-- 테마별 문화재 투어 + 커뮤니티 -->
 	<section class="container mb-5 pb-lg-3">
