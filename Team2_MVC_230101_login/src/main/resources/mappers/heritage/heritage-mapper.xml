@@ -26,6 +26,7 @@
 		<result property="ccbaAdmin" column="ccbaAdmin"/>
 		<result property="imageUrl" column="imageUrl"/>
 		<result property="content" column="content"/>
+		<result property="nickName" column="NICKNAME"/>
 	</resultMap>
 	
 	<!-- 문화재 리플 테이블 -->
@@ -226,7 +227,8 @@
 	
 	
 	<select id="selectCollectionListByUNO" parameterType="int" resultMap="heritageListResultMap">
-		select * from COLLECTION_INPUT_H C, HERITAGE H WHERE C.H_NO = H.H_NO AND C.U_NO = #{uno}
+		SELECT C.U_NO, C.H_NO, H.ccmaName, H.ccbaMnm1, H.ccbaCtcdNm, H.ccsiName, H.ccceName, H.imageUrl, M.NICKNAME
+		FROM COLLECTION_INPUT_H C, HERITAGE H, USER M WHERE C.H_NO = H.H_NO AND C.U_NO = M.U_NO AND C.U_NO = #{uno}
 	</select>
 	<select id="selectCollectionList"  resultMap="heritageListResultMap">
 		select * from HERITAGE ORDER BY RAND() LIMIT 6;
