@@ -125,7 +125,7 @@
 								<a href="${path}/search-detail?hno=${item.imageUrl }"><img
 									src="${item.imageUrl }" alt="Image"></a>
 							</div>
-							<div class="card-body position-relative pb-2">
+							<div class="card-body position-relative pb-2" style="height: 130px;">
 								<div class="mb-2">
 									<span class="d-table badge bg-success">${item.ccmaName}</span>
 								</div>
