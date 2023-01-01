@@ -29,29 +29,21 @@ public class MyCollectionController {
 	public String myCollection(Model model, 
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember
 			) {
-		int uno = loginMember.getNo();
-		if(uno == 0) {
-			return "redirect:error";
-		}
+		// 예외처리 코드
+		// 로그인 안되어있을 때 알람창을 띄우고 메인으로 보냄
+		try {
+			int uno = loginMember.getNo();
+			List<Heritage> list = service.selectCollectionListByUNO(uno);
+			model.addAttribute("nick", loginMember.getNickname());
+			model.addAttribute("list", list);
+			return "collection/collection-detail";
 			
-		List<Heritage> list = service.selectCollectionListByUNO(uno);
-		model.addAttribute("nick", loginMember.getNickname());
-		model.addAttribute("list", list);
-		return "collection/collection-detail";
+		} catch (NullPointerException e) {
+			model.addAttribute("msg", "로그인을 먼저해주세요");
+			model.addAttribute("location", "/searchMain");
+			return "common/msg";
+		}
 	}
-	
-//	@RequestMapping("/collection-detail")
-//	public String myCollection(Model model, HttpSession session) {
-//		Member loginMember = (Member) session.getAttribute("loginMember");
-//		int uno = 1;
-//		if(loginMember != null) {
-//			uno = loginMember.getNo();
-//		}
-//		
-//		List<Heritage> list = service.selectCollectionListByUNO(uno);
-//		model.addAttribute("list", list);
-//		return "collection/collection-detail";
-//	}
 	
 	
 	@RequestMapping("/collection_view")
