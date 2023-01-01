@@ -12,9 +12,11 @@
 .bg-1{
   position: relative;
 }
-.bg-2{
+
+/* 행사일정 문구랑 행사목록 전체 칸 끌어올리기 */
+.bg-3{
   position: relative;
-  top: -90px;
+  top: -200px !important;
 }
 
 /* 검색 */
@@ -30,7 +32,7 @@
 /* 사진크기 */
 img {
   width: 383px;
-  height: 240px;
+  height: 500px;
   object-fit: cover;
 }
 
