@@ -127,6 +127,10 @@ keyframes spinner { 100% {
 <!-- 인화아이콘 -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+
+<!-- 230102 헤더풋터 추가 -->
+<link rel="stylesheet" media="screen" href="${path}/resources/css/common/header-footer.css">
+  
 </head>
 
 
