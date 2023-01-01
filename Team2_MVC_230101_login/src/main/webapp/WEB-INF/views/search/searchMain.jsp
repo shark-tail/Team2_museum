@@ -92,7 +92,7 @@
 	<!-- 문화재 검색 필터 -->
 	<section class="container mt-5 mb-5">
 		<aside
-			class="col-lg-4 col-xl-3 border-top-lg border-end-lg shadow-sm px-3 px-xl-4 px-xxl-5 pt-lg-2 w-100">
+			class="ps-5 pe-5 border-top-lg shadow-sm" style="width:1150px; margin: auto">
 			<!-- border-top-lg border-end-lg shadow-sm -->
 			<div class="offcanvas offcanvas-start offcanvas-collapse"
 				id="filters-sidebar">
@@ -436,38 +436,10 @@
 										</div>
 									</div>
 								</div>
-
-								<!-- 지정연도 + 유형분류 -->
-								<div class="wide">
-									<!-- 지정연도 -->
-									<div class="pb-4 mb-2">
-										<h3 class="h6">지정연도</h3>
-										<div class="range-slider" data-start-min="300"
-											data-start-max="700" data-min="50" data-max="1000"
-											data-step="20">
-											<!-- <div class="range-slider-ui"></div> -->
-											<div class="d-flex align-items-center p-3">
-												<div class="w-50 pe-2">
-													<div class="input-group">
-														<span class="input-group-text fs-base">시작</span> <input
-															class="form-control range-slider-value-min" type="text">
-													</div>
-												</div>
-												<div class="text-muted">&mdash;</div>
-												<div class="w-50 ps-2">
-													<div class="input-group">
-														<span class="input-group-text fs-base">끝</span> <input
-															class="form-control range-slider-value-max" type="text">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- 유형분류 -->
-									<div class="pb-4 mb-2">
+								<div class="pb-4 mb-2">
 										<h3 class="h6">유형분류</h3>
 										<div class="overflow-auto" data-simplebar
-											data-simplebar-auto-hide="false" style="height: 5rem;">
+											data-simplebar-auto-hide="false" style="height: 15.75rem;">
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" id="type1"
 													name="type" value="유적건조물"
@@ -506,7 +478,6 @@
 											</div>
 										</div>
 									</div>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -526,15 +497,6 @@
 		<div class="flex-grow-1">
 			<span class="fs-5 fw-bold">총 ${pageInfo.listCount}건의 자료가 검색되었습니다.</span>
 		</div>
-		<!-- 정렬 방법 라디오-->
-		<div class="radio3 fs-5 fw-bold">
-			<label class="" for="sort-name"> <input class="" type="radio"
-				name="sort" id="sort-name" value="option11" checked> <span>이름순</span></label>&emsp;
-			<label class="" for="sort-date"> <input class="" type="radio"
-				name="sort" id="sort-date" value="option22"> <span>지정일순</span></label>&emsp;
-			<label class="" for="sort-pop"> <input class="" type="radio"
-				name="sort" id="sort-pop" value="option33"> <span>인기순</span></label>
-		</div>
 	</div>
 	<hr />
 
@@ -543,6 +505,7 @@
 
 		<!-- 리스트 조회 -->
 		<c:forEach var="item" items="${list}">
+		
 
 			<!-- Item1 -->
 			<div class="result-item1 shadow ">
@@ -565,18 +528,20 @@
 				<div class="d-flex justify-content-evenly b2-box mt-5">
 					<div class="b2-box-ch ps-4">
 						<button
-							onclick="location.href = '${path}/addHeritageLike?hno=${item.hno}&uno=1'"
+							onclick="location.href = '${path}/addHeritageLike?hno=${item.hno}&${item.uno}'"
 							class="btn btn-icon btn-light-primary text-primary rounded-circle"
 							type="button" data-bs-toggle="tooltip" data-bs-placement="left"
 							aria-label="Remove from Favorites"
 							data-bs-original-title="좋아요">
 							<i class="fi-heart"></i>
 						</button>
-						<span class="fw-bold align-middle">${like}</span>
+						<c:forEach var="item2" items="${list2}">
+						<span class="fw-bold align-middle">${item.likes}</span>
+						</c:forEach>
 					</div>
 					<div class="b2-box-ch">
 						<button
-							onclick="location.href = '${path}/addCollection?hno=${item.hno}&uno=1'"
+							onclick="location.href = '${path}/addCollection?hno=${item.hno}&${item.uno}'"
 							class="btn btn-icon btn-light-primary text-primary rounded-circle"
 							type="button" data-bs-toggle="tooltip" data-bs-placement="left"
 							aria-label="Remove from Favorites"
@@ -623,32 +588,7 @@
 		</ul>
 	</div>
 	<!-- 페이지 넘기기 끝-->
-	
-	<!-- page부 시작 -->
-	<%-- <div align="center">
-		<!--처음 페이지 -->
-		<button onclick="movePage('${path}/searchMain?page=1');">&lt;&lt;</button>
-		<!--이전 페이지 -->
-		<button onclick="movePage('${path}/searchMain?page=${pageInfo.prevPage}');">&lt;</button>
-	
-		<!-- 10개 페이지 -->
-		<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" step="1" varStatus="status">
-			<c:if test="${status.current == pageInfo.currentPage}">
-				<button disabled>${status.current}</button>
-			</c:if>
-			<c:if test="${status.current != pageInfo.currentPage}">
-				<button onclick="movePage('${path}/searchMain?page=${status.current}');">
-					${status.current}
-				</button>
-			</c:if>
-		</c:forEach>
 
-		<!--다음 페이지 -->
-		<button onclick="movePage('${path}/searchMain?page=${pageInfo.nextPage}');">&gt;</button>
-		<!-- 마지막 페이지 -->
-		<button onclick="movePage('${path}/searchMain?page=${pageInfo.maxPage}');">&gt;&gt;</button>
-	</div>
-		<!-- page부 종료 --> --%>
 </section>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
