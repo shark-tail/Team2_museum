@@ -187,15 +187,14 @@
                 <div class="d-flex align-items-center pe-2"><img class="rounded-circle me-1" src="${path}/resources/img/avatars/13.png"
                     width="48" alt="Avatar">
                   <div class="ps-2">
-                    <h6 class="fs-5 mb-0">${reply.uno}</h6>
+                    <h6 class="fs-5 mb-0">${reply.nickName}</h6>
                   </div>
                 </div>
-
                 <span class="text-muted fs-sm">${reply.hrCreateDate}
-                <%-- <c:if test="${ !empty loginMember && (loginMember.id == reply.writerId 	|| loginMember.role == 'ROLE_ADMIN') }">
+                <c:if test="${ !empty loginMember && (loginMember.no == reply.uno || loginMember.role == 'ROLE_ADMIN') }">
 				<button class="btn-delete" onclick="deleteReply('${reply.hrno}','${reply.hno}');" >삭제</button>
-				</c:if> --%>
-                <i class="text-danger ms-2 fi-trash mt-n1" style="cursor:pointer;" onclick="deleteReply('${reply.hrno}','${reply.hno}');"></i>
+				</c:if>
+                <%-- <i class="text-danger ms-2 fi-trash mt-n1" style="cursor:pointer;" onclick="deleteReply('${reply.hrno}','${reply.hno}');"></i> --%>
                 </span>
               </div>
               <p>${reply.hrContent}</p>
