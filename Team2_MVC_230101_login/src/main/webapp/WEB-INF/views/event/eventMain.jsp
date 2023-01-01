@@ -131,8 +131,15 @@
         style="background-image: linear-gradient(0deg, rgba(31, 27, 45, .7), rgba(31, 27, 45, .7));"></span>
       <div class="jarallax-img" style="background-image: url(${path}/resources/img/판굿\(문화재청\).JPG);"></div>
     </div>
-
-    <div class="page-wrapper bg-2">
+	
+	<!-- 행사일정 문구 -->
+	<div class="page-wrapper bg-3">
+	<div class="container mb-md-4 ">
+	<span style="color:#fff; font-size:40px;">행사일정</span>
+	</div>
+	</div>
+	
+    <div class="page-wrapper bg-3">
       <div class="container mb-md-4 ">
         <!-- Page content-->
         <div class="card card-body p-4 p-md-5 shadow-sm">
@@ -169,7 +176,10 @@
           	</c:forEach>
 
             <!-- 페이지 넘버링, 더보기로 교체-->
-            
+            <section style='margin-top:120px;'>
+            	<div onclick="this.parentElement.style.display='none'" style='background-color:#FD5631; color:#fff; width : 230px; height : 52px; text-align : center; 
+            	padding-top:15px; margin-left:490px;'>더보기</div>
+            </section>
           </div>
         </div>
       </div>
