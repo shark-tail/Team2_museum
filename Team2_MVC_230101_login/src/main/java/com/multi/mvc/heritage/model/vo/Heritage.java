@@ -31,5 +31,7 @@ public class Heritage {
 	private String imageUrl; // 메인노출이미지URL
 	private String content; // 내용
 	private HImage images; // 이미지
-	private List<HReply> replies;
+	private List<AddHeritageLike> likes; // 좋아요체크
+	private List<HReply> replies; // 리뷰
+	private String nickName; // 닉네임
 }
