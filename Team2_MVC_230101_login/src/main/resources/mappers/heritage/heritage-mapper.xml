@@ -37,6 +37,7 @@
 		<result property="hrCreateDate" column="HR_CREATE_DATE"/>
 		<result property="hrModifyDate" column="HR_MODIFY_DATE"/>
 		<result property="hrStatus" column="HR_STATUS"/>
+		<result property="nickName" column="NICKNAME"/>
 	</resultMap>
 	
 	<!-- 문화재 추가 이미지 테이블 -->
@@ -154,21 +155,22 @@
 			H.ccbaLcad, H.ccceName, H.ccbaPoss, H.longitude, H.latitude, H.ccbaAdmin, H.imageUrl, H.content,
 			R.HR_NO AS R_HR_NO, 
 		    R.H_NO AS R_H_NO, 
+		    R.U_NO AS R_U_NO, 
 		    R.HR_CONTENT AS R_HR_CONTENT, 
-		    M.NICKNAME  AS R_NICKNAME,
+		    M.NICKNAME AS R_NICKNAME,
 		    R.HR_CREATE_DATE  AS R_HR_CREATE_DATE, 
 		    R.HR_MODIFY_DATE  AS R_HR_MODIFY_DATE,
 		    I.ImageUrl1 AS I_ImageUrl1,
 		    I.ImageUrl2 AS I_ImageUrl2,
 		    I.ImageUrl3 AS I_ImageUrl3,
-		    I.ImageUrl4 AS I_ImageUrl4,
+		    I.ImageUrl4 AS I_ImageUrl4, 
 		    I.CcimDesc1 AS I_CcimDesc1,
 		    I.CcimDesc2 AS I_CcimDesc2,
 		    I.CcimDesc3 AS I_CcimDesc3,
 		    I.CcimDesc4 AS I_CcimDesc4
 		FROM HERITAGE H
-		LEFT OUTER JOIN HERITAGE_RE R ON (H.H_NO = R.H_NO)
-		LEFT OUTER JOIN USER M ON (R.U_NO = M.U_NO)
+        LEFT OUTER JOIN HERITAGE_RE R ON (H.H_NO = R.H_NO)
+        LEFT OUTER JOIN USER M ON (R.U_NO = M.U_NO)
 		LEFT OUTER JOIN HERITAGE_IMAGE I ON (H.H_NO = I.HI_NO)
 		WHERE H.H_NO = #{hno}
 		<!-- JOIN MEMBER M ON(B.WRITER_NO = M.NO)
