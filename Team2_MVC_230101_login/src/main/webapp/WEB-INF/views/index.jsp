@@ -282,7 +282,7 @@
 								src="${path}/resources/img/themaimg/22.png"
 								alt="Gallery thumbnail" img-responsive>
 								<div class="carousel-caption text6">
-									<h3 class="fs-6 text-white text-center">방문인증코스1</h3>
+									<h3 class="fs-6 text-white text-center">산사의 길</h3>
 								</div> <span class="gallery-item-caption">문화재이미지</span>
 							</a>
 						</div>
