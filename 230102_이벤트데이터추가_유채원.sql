@@ -1,0 +1,356 @@
+-- DROP SCHEMA IF EXISTS MUSEUM;
+-- CREATE SCHEMA MUSEUM;
+-- USE MUSEUM;
+
+DROP TABLE IF EXISTS USER;
+CREATE TABLE USER (
+    U_NO    INT    AUTO_INCREMENT PRIMARY KEY,
+    ID    VARCHAR(20) NOT NULL UNIQUE,
+    PASSWORD    VARCHAR(100) NOT NULL,
+    NAME    VARCHAR(20),
+    NICKNAME    VARCHAR(20) NOT NULL UNIQUE,
+    STATUS    VARCHAR(1) DEFAULT 'Y' CHECK(STATUS IN('Y', 'N')),
+    EMAIL    VARCHAR(50),
+    ROLE    VARCHAR(10)    DEFAULT 'ROLE_USER',
+    KAKAOTOKEN    VARCHAR(1000),
+    NAVERTOKEN    VARCHAR(1000),
+    GOOGLETOKEN    VARCHAR(1000),
+    ENROLL_DATE DATETIME DEFAULT CURRENT_TIMESTAMP,
+    MODIFY_DATE DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+INSERT INTO USER VALUES(1, 'test1', '1212', '이름1', '닉네임1', DEFAULT, 'test1@email.com', 'ROLE_USER', 'none', 'none', 'none', DEFAULT, DEFAULT);
+delete from user where id = 'test2';
+SELECT * FROM USER;
+
+
+DROP TABLE IF EXISTS HERITAGE;
+-- delete from heritage;
+-- truncate heritage;
+CREATE TABLE HERITAGE (
+	H_NO	INT AUTO_INCREMENT PRIMARY KEY,
+	ccmaName	VARCHAR(500), -- 문화재종목
+	ccbaMnm1	VARCHAR(500), -- 문화재명
+	gcodeName	VARCHAR(500), -- 문화재분류
+	bcodeName	VARCHAR(500), -- 문화재분류2
+	mcodeName	VARCHAR(500), -- 문화재분류3
+	scodeName	VARCHAR(500), -- 문화재분류4
+	ccbaQuan	VARCHAR(500), -- 수량
+	ccbaAsdt	VARCHAR(500), -- 지정(등록일)
+	ccbaCtcdNm	VARCHAR(500), -- 시도명
+	ccsiName	VARCHAR(500), -- 시군구명
+	ccbaLcad	VARCHAR(500), -- 소재지 상세
+	ccceName	VARCHAR(500), -- 시대
+	ccbaPoss	VARCHAR(500), -- 소유자
+	longitude	VARCHAR(500), -- 경도 ( 0일 경우 : 위치 값 없음 )
+	latitude	VARCHAR(500), -- 위도 ( 0일 경우 : 위치 값 없음 )
+	ccbaAdmin	VARCHAR(500), -- 관리자
+	imageUrl	VARCHAR(500), -- 메인노출이미지URL
+	content	VARCHAR(5000) -- 내용
+);
+
+SELECT * FROM HERITAGE;
+select * from HERITAGE where H_NO = 1;
+
+DROP TABLE IF EXISTS HERITAGE_IMAGE;
+CREATE TABLE HERITAGE_IMAGE (
+	HI_NO	INT	AUTO_INCREMENT PRIMARY KEY,
+	H_NO	INT,
+	ImageUrl1	VARCHAR(500),
+	CcimDesc1	VARCHAR(500),
+    ImageUrl2	VARCHAR(500),
+	CcimDesc2	VARCHAR(500),
+    ImageUrl3	VARCHAR(500),
+	CcimDesc3	VARCHAR(500),
+    ImageUrl4	VARCHAR(500),
+	CcimDesc4	VARCHAR(500)
+);
+
+SELECT * FROM HERITAGE_IMAGE;
+
+DROP TABLE IF EXISTS HERITAGE_RE;
+CREATE TABLE HERITAGE_RE (
+	HR_NO	INT	AUTO_INCREMENT PRIMARY KEY,
+	H_NO	INT,
+	U_NO	INT,
+	HR_CONTENT	VARCHAR(2000),
+	HR_CREATE_DATE	DATETIME,
+	HR_MODIFY_DATE	DATETIME,
+	HR_STATUS	VARCHAR(3)
+);
+
+SELECT * FROM HERITAGE_RE;
+
+DROP TABLE IF EXISTS HERITAGE_LIKE;
+CREATE TABLE HERITAGE_LIKE (
+    U_NO    INT,
+    H_NO    INT,
+    PRIMARY KEY (U_NO, H_NO),
+    foreign key(U_NO) references USER(U_NO),
+    foreign key(H_NO) references HERITAGE(H_NO)
+);
+SELECT * FROM HERITAGE_LIKE;
+
+
+
+DROP TABLE COLLECTION_INPUT_H;
+CREATE TABLE COLLECTION_INPUT_H (
+	U_NO	INT,
+	H_NO	INT,
+    PRIMARY KEY (U_NO, H_NO),
+    foreign key(U_NO) references USER(U_NO),
+    foreign key(H_NO) references HERITAGE(H_NO)
+);
+
+DROP TABLE IF EXISTS COLLECTION;
+CREATE TABLE COLLECTION (
+	CT_NO	INT	AUTO_INCREMENT PRIMARY KEY,
+	U_NO	INT,
+	CT_Title	VARCHAR(500),
+	CT_CONTENT	VARCHAR(2000),
+	CT_Status	VARCHAR(3)
+);
+SELECT * FROM COLLECTION;
+
+Delete from COLLECTION_INPUT_H WHERE U_NO=1 AND H_NO=4;
+SELECT * FROM COLLECTION_INPUT_H;
+
+insert into COLLECTION_INPUT_H(U_NO,H_NO) values(1,1);
+insert into COLLECTION_INPUT_H(U_NO,H_NO) values(2,2);
+insert into COLLECTION_INPUT_H(U_NO,H_NO) values(2,3);
+insert into COLLECTION_INPUT_H(U_NO,H_NO) values(1,4);
+insert into COLLECTION_INPUT_H(U_NO,H_NO) values(1,5);
+insert into COLLECTION_INPUT_H(U_NO,H_NO) values(1,6);
+
+-- 마이페이지에 나열함
+select * from COLLECTION_INPUT_H C, HERITAGE H WHERE C.H_NO = H.H_NO AND C.U_NO = 1; 
+
+select  * from (
+select U_NO, min(H_NO) as H_NO from COLLECTION_INPUT_H group by U_NO) C 
+inner join HERITAGE H ON C.H_NO = H.H_NO;
+
+DROP TABLE IF EXISTS COLLECTION_RE;
+CREATE TABLE COLLECTION_RE (
+	CTR_NO	INT	AUTO_INCREMENT PRIMARY KEY,
+	CT_NO	INT,
+	U_NO	INT,
+	CTR_CONTENT	VARCHAR(2000),
+	CTR_CREATE_DATE	DATETIME,
+	CTR_MODIFY_DATE	DATETIME,
+	CTR_STATUS	VARCHAR(3)
+);
+SELECT * FROM COLLECTION_RE;
+
+
+DROP TABLE IF EXISTS COLLECTION_LIKE;
+CREATE TABLE COLLECTION_LIKE (
+	CTL_NO	INT	AUTO_INCREMENT PRIMARY KEY,
+	CT_NO	INT,
+	U_NO	INT,
+	CTL_LIKE	INT
+);
+
+SELECT * FROM COLLECTION_LIKE;
+
+
+DROP TABLE IF EXISTS BOARD;
+CREATE TABLE BOARD (
+	B_NO	INT	AUTO_INCREMENT PRIMARY KEY,
+	U_NO	INT,
+	TITLE	VARCHAR(1000),
+	CONTENT	VARCHAR(2000),
+	TYPE	VARCHAR(100),
+	ORIGINAL_FILENAME	VARCHAR(1000),
+	RENAMED_FILENAME	VARCHAR(1000),
+	READCOUNT	INT DEFAULT 0,
+	STATUS	VARCHAR(3) DEFAULT 'Y',
+	CREATE_DATE	DATETIME DEFAULT CURRENT_TIMESTAMP,
+	MODIFY_DATE	DATETIME DEFAULT CURRENT_TIMESTAMP	
+);
+
+INSERT INTO BOARD VALUES(1, 1, '테스트 제목1', '테스트 내용1', 'notice', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(2, 1, '테스트 제목2', '테스트 내용2', 'notice', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(3, 1, '테스트 제목3', '테스트 내용3', 'notice', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(4, 1, '테스트 제목4', '테스트 내용4', 'notice', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(5, 1, '테스트 제목5', '테스트 내용5', 'notice', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(6, 1, '테스트 제목6', '테스트 내용6', 'free', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(7, 1, '테스트 제목7', '테스트 내용7', 'free', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(8, 1, '테스트 제목8', '테스트 내용8', 'free', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(9, 1, '테스트 제목9', '테스트 내용9', 'free', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(10, 1, '테스트 제목10', '테스트 내용10', 'free', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(11, 1, '테스트 제목11', '테스트 내용11', 'question', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(12, 1, '테스트 제목12', '테스트 내용12', 'question', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(13, 1, '테스트 제목13', '테스트 내용13', 'question', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(14, 1, '테스트 제목14', '테스트 내용14', 'question', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(15, 1, '테스트 제목15', '테스트 내용15', 'question', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(16, 1, '테스트 제목11', '테스트 내용11', 'customer', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(17, 1, '테스트 제목12', '테스트 내용12', 'customer', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(18, 1, '테스트 제목13', '테스트 내용13', 'customer', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(19, 1, '테스트 제목14', '테스트 내용14', 'customer', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(20, 1, '테스트 제목15', '테스트 내용15', 'customer', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(21, 1, '테스트 제목21', '테스트 내용21', 'free', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(22, 1, '테스트 제목22', '테스트 내용22', 'free', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(23, 1, '테스트 제목23', '테스트 내용23', 'free', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(24, 1, '테스트 제목24', '테스트 내용24', 'free', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(25, 1, '테스트 제목25', '테스트 내용25', 'free', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(26, 1, '테스트 제목26', '테스트 내용26', 'free', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(27, 1, '테스트 제목27', '테스트 내용27', 'free', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(28, 1, '테스트 제목28', '테스트 내용28', 'free', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(29, 1, '테스트 제목29', '테스트 내용29', 'free', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+INSERT INTO BOARD VALUES(30, 1, '테스트 제목30', '테스트 내용30', 'free', 'before', 'after', DEFAULT, 'Y', '2022-12-27', '2022-12-28');
+-- UPDATE BOARD SET STATUS = 'Y' WHERE B_NO = 15; 
+SELECT * FROM BOARD;
+
+DROP TABLE IF EXISTS BOARD_RE;
+CREATE TABLE BOARD_RE (
+	BR_NO	INT	AUTO_INCREMENT PRIMARY KEY,
+	B_NO	INT,
+	U_NO	INT,
+	BR_CONTENT	VARCHAR(2000),
+	BR_CREATE_DATE	DATETIME DEFAULT CURRENT_TIMESTAMP,
+	BR_MODIFY_DATE	DATETIME DEFAULT CURRENT_TIMESTAMP,
+	BR_STATUS	VARCHAR(3) DEFAULT 'Y'
+);
+
+-- INSERT INTO BOARD_RE VALUES(1, 15, 1, "테스트 댓글1", default, default, default);
+-- DELETE FROM BOARD_RE WHERE BR_NO = 5;
+SELECT * FROM BOARD_RE;
+
+
+
+
+
+DROP TABLE IF EXISTS STAMP;
+CREATE TABLE STAMP (
+	S_NO	INT	AUTO_INCREMENT PRIMARY KEY,
+	U_NO	INT,
+	SINLA	INT,
+	BEKJE	INT,
+	GOGURYEO	INT
+);
+
+SELECT * FROM STAMP;
+
+
+
+DROP TABLE IF EXISTS EVENT;
+CREATE TABLE EVENT (
+	E_NO	INT	PRIMARY KEY,
+	subTitle	VARCHAR(500),
+	subContent	VARCHAR(2000),
+	sDate	VARCHAR(500),
+	eDate	VARCHAR(500),
+	subDesc	VARCHAR(500),
+	subDesc1	VARCHAR(500),
+	image	VARCHAR(2000),
+	sido	VARCHAR(100),
+	gogun	VARCHAR(100),
+	subDate	VARCHAR(2000)
+);
+
+-- 수정 : 이벤트 테이블에 데이터 추가
+INSERT INTO EVENT VALUES(1,'종가의 정성','종부에게 배우는 종가의 음식을 알아보고 체험해 보는 프로그램' ,'20221101' ,'20221101', '의정공김국광종택','일반인','미정','충청남도', '논산시','11월1일-8일-15일-22일 매주 화요일 오전 09:30~12:30');
+INSERT INTO EVENT VALUES(2,'에헴! 이리오너라 향교나들이','향교나들이를 통해 전통예절을 배우고 익히는 인성교육의 전당' ,20221101 ,20221101, '영천향교',' 어린이집 어린이','미정','경상북도', '영천시 ','11/1, 11/8, 11/15, 11/22, 11/29 (09:00~14:00) 화요일');
+INSERT INTO EVENT VALUES(3,'찾아가는향교',' 인성예절 및 전통놀이' ,20221101 ,20221101, '장애인작업장, 지역아동센터','장애인 및 초등학생','미정','강원도 ', '정선군 ',' 11/1, 11/2, 11/3, 11/8, 11/9, 11/10, 11/15, 11/16, 11/17 (총 9회) // 11:00~18:00 ');
+INSERT INTO EVENT VALUES(4,'법고창신 전통문화체험','예절, 한복입기,한옥, 전통혼례, 국궁, 투호, 덕메치기, 윷놀리, 다도, 야행 ' ,20221101 ,20221101, '경주향교','일반시민 ','미정','경상북도 ', '경주시 ','11/2, 11/8, 11/9, 11/14, 11/16, 11/18');
+INSERT INTO EVENT VALUES(5,'양주향교와 함께하는 시간여행','종양주향교 해설사의 안내를 통해 향교와 인근 역사문화유산 체험 및 탐방' ,20221101 ,20221101, '양주향교','시민','미정','경기도 ', '양주시 ',' 11/2, 11/5, 11/9, 11/12, 11/16, 11/23, 11/26, 11/30 (총 9회) // 10:00~16:00 ');
+INSERT INTO EVENT VALUES(6,'외규장각 의궤, 그 고귀함의 의미','외규장각 의궤의 존재를 세상에 알리고 연구에 헌신하다 2011년 11월 23일 타계하신 고故 박병선 박사를 기리며 추모기간 동안 무료로 전시장을 개방합니다. (추모기간: 2022. 11. 21.(월) ~ 11. 27.(일) / 1주일)' ,20221101 ,20221101, '국립중앙박물관','시민','미정','서울특별시', '용산구 ',' 2022년 11월 1일(화) ~ 2023년 3월 19일(일)
+월,화,목,금,일요일 10:00~18:00(발권마감 17:20 입장마감 17:30)/ 수,토요일 10:00~21:00(발권마감 20:20 입장마감 20:30) *관람 시간 내 관람 원하시는 시간대에 입장 가능합니다. *휴관일 1.1.(신정), 1.22.(설날 당일) ');
+SELECT * FROM EVENT;
+
+ALTER TABLE COLLECTION ADD CONSTRAINT FK_USER_TO_COLLECTION_1 FOREIGN KEY (
+	U_NO
+)
+REFERENCES USER (
+	U_NO
+);
+
+ALTER TABLE HERITAGE_IMAGE ADD CONSTRAINT FK_HERITAGE_TO_HERITAGE_IMAGE_1 FOREIGN KEY (
+	H_NO
+)
+REFERENCES HERITAGE (
+	H_NO
+);
+
+ALTER TABLE BOARD ADD CONSTRAINT FK_USER_TO_BOARD_1 FOREIGN KEY (
+	U_NO
+)
+REFERENCES USER (
+	U_NO
+);
+
+ALTER TABLE BOARD_RE ADD CONSTRAINT FK_BOARD_TO_BOARD_RE_1 FOREIGN KEY (
+	B_NO
+)
+REFERENCES BOARD (
+	B_NO
+);
+
+ALTER TABLE BOARD_RE ADD CONSTRAINT FK_USER_TO_BOARD_RE_1 FOREIGN KEY (
+	U_NO
+)
+REFERENCES USER (
+	U_NO
+);
+
+ALTER TABLE COLLECTION_RE ADD CONSTRAINT FK_COLLECTION_TO_COLLECTION_RE_1 FOREIGN KEY (
+	CT_NO
+)
+REFERENCES COLLECTION (
+	CT_NO
+);
+
+ALTER TABLE COLLECTION_RE ADD CONSTRAINT FK_USER_TO_COLLECTION_RE_1 FOREIGN KEY (
+	U_NO
+)
+REFERENCES USER (
+	U_NO
+);
+
+ALTER TABLE STAMP ADD CONSTRAINT FK_USER_TO_STAMP_1 FOREIGN KEY (
+	U_NO
+)
+REFERENCES USER (
+	U_NO
+);
+
+ALTER TABLE COLLECTION_LIKE ADD CONSTRAINT FK_COLLECTION_TO_COLLECTION_LIKE_1 FOREIGN KEY (
+	CT_NO
+)
+REFERENCES COLLECTION (
+	CT_NO
+);
+
+ALTER TABLE COLLECTION_LIKE ADD CONSTRAINT FK_USER_TO_COLLECTION_LIKE_1 FOREIGN KEY (
+	U_NO
+)
+REFERENCES USER (
+	U_NO
+);
+
+ALTER TABLE HERITAGE_RE ADD CONSTRAINT FK_HERITAGE_TO_HERITAGE_RE_1 FOREIGN KEY (
+	H_NO
+)
+REFERENCES HERITAGE (
+	H_NO
+);
+
+ALTER TABLE HERITAGE_RE ADD CONSTRAINT FK_USER_TO_HERITAGE_RE_1 FOREIGN KEY (
+	U_NO
+)
+REFERENCES USER (
+	U_NO
+);
+
+ALTER TABLE COLLECTION_INPUT_H ADD CONSTRAINT FK_COLLECTION_TO_COLLECTION_INPUT_H_1 FOREIGN KEY (
+	CT_NO
+)
+REFERENCES COLLECTION (
+	CT_NO
+);
+
+ALTER TABLE COLLECTION_INPUT_H ADD CONSTRAINT FK_HERITAGE_TO_COLLECTION_INPUT_H_1 FOREIGN KEY (
+	H_NO
+)
+REFERENCES HERITAGE (
+	H_NO
+);
