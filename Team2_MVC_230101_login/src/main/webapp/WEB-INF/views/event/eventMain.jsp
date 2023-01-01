@@ -110,6 +110,9 @@
   <link rel="stylesheet" media="screen" href="${path}/resources/css/common/common.css">
   <!-- 인화스타일시트 -->
   <link rel="stylesheet" media="screen" href="${path}/resources/css/event-main.css">
+  <!-- 230102 헤더풋터 추가 -->
+  <link rel="stylesheet" media="screen" href="${path}/resources/css/common/header-footer.css">
+  
 </head>
 
 
