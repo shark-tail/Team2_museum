@@ -46,15 +46,19 @@
 
 
 			<%-- 검색바 --%>
+			<c:set var="searchType" value="${'name'}" />
 			<div class="col-xl-6 col-lg-9 col-md-10 mx-auto px-0">
-				<form
+				<form action="${path}/searchMain" method="get"
 					class="form-group d-block d-md-flex position-relative rounded-md-pill mb-2 mb-sm-4 mb-lg-0">
 					<div class="input-group input-group-lg">
 						<input class="form-control mx-auto" type="text"
-							placeholder="문화재를 검색하세요."> <span
-							class="input-group-text text-muted rounded-pill pe-3"><i
-							class="fi-search"></i></span>
+							placeholder="문화재를 검색하세요." id="name" name="name" value="${name}">
+							 <!-- <span
+							class="input-group-text text-muted rounded-pill pe-3"><input
+							class="fi-search"  type="submit"></input></span> -->
 					</div>
+					<button class="btn fi-search p-0 me-4" style="border:none; background:none;" 
+							type="submit"></button> 
 					<hr class="d-md-none my-2">
 				</form>
 			</div>
