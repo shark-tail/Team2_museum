@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.multi.mvc.heritage.model.mapper.HeritageMapper">
+
+	<!-- 문화재 테이블 -->
+	<resultMap type="Heritage" id="heritageListResultMap">
+		<id property="hno" column="H_NO"/>
+		<result property="uno" column="uno"/>
+		<result property="ccmaName" column="ccmaName"/>
+		<result property="ccbaMnm1" column="ccbaMnm1"/>
+		<result property="gcodeName" column="gcodeName"/>
+		<result property="bcodeName" column="bcodeName"/>
+		<result property="mcodeName" column="mcodeName"/>
+		<result property="scodeName" column="scodeName"/>
+		<result property="ccbaQuan" column="ccbaQuan"/>
+		<result property="ccbaAsdt" column="ccbaAsdt"/>
+		<result property="ccbaCtcdNm" column="ccbaCtcdNm"/>
+		<result property="ccsiName" column="ccsiName"/>
+		<result property="ccbaLcad" column="ccbaLcad"/>
+		<result property="ccceName" column="ccceName"/>
+		<result property="ccbaPoss" column="ccbaPoss"/>
+		<result property="longitude" column="longitude"/>
+		<result property="latitude" column="latitude"/>
+		<result property="ccbaAdmin" column="ccbaAdmin"/>
+		<result property="imageUrl" column="imageUrl"/>
+		<result property="content" column="content"/>
+		<result property="nickName" column="NICKNAME"/>
+	</resultMap>
+	
+	<!-- 문화재 리플 테이블 -->
+	<resultMap type="HReply" id="heritageReplyResultMap">
+		<id property="hrno" column="HR_NO"/>
+		<result property="hno" column="H_NO"/>
+		<result property="uno" column="U_NO"/>
+		<result property="hrContent" column="HR_CONTENT"/>
+		<result property="hrCreateDate" column="HR_CREATE_DATE"/>
+		<result property="hrModifyDate" column="HR_MODIFY_DATE"/>
+		<result property="hrStatus" column="HR_STATUS"/>
+		<result property="nickName" column="NICKNAME"/>
+	</resultMap>
+	
+	<!-- 문화재 리플 테이블 -->
+	<resultMap type="CoReply" id="heritageReplyResultMap2">
+		<id property="hrno" column="HR_NO"/>
+		<result property="hno" column="H_NO"/>
+		<result property="uno" column="U_NO"/>
+		<result property="hrContent" column="HR_CONTENT"/>
+		<result property="hrCreateDate" column="HR_CREATE_DATE"/>
+		<result property="hrModifyDate" column="HR_MODIFY_DATE"/>
+		<result property="hrStatus" column="HR_STATUS"/>
+		<result property="nickName" column="NICKNAME"/>
+	</resultMap>
+	
+	<!-- 문화재 추가 이미지 테이블 -->
+	<resultMap type="HImage" id="heritageImageResultMap">
+		<id property="hino" column="HI_NO"/>
+		<result property="hno" column="H_NO"/>
+		<result property="imageUrl1" column="ImageUrl1"/>
+		<result property="ccimDesc1" column="CcimDesc1"/>
+		<result property="imageUrl2" column="ImageUrl2"/>
+		<result property="ccimDesc2" column="CcimDesc2"/>
+		<result property="imageUrl3" column="ImageUrl3"/>
+		<result property="ccimDesc3" column="CcimDesc3"/>
+		<result property="imageUrl4" column="ImageUrl4"/>
+		<result property="ccimDesc4" column="CcimDesc4"/>
+	</resultMap>
+	
+	<resultMap type="AddCollection" id="addCollectionResultMap">
+		<id property="uno" column="U_NO"/>
+		<result property="hno" column="H_NO"/>
+	</resultMap>
+	
+		<resultMap type="AddHeritageLike" id="addHeritageLikeResultMap">
+		<id property="uno" column="U_NO"/>
+		<result property="hno" column="H_NO"/>
+	</resultMap>
+	
+	<resultMap type="Heritage" id="heritageDetailResultMap" extends="heritageListResultMap">
+		<collection property="replies" javaType="arrayList" columnPrefix="R_" 
+												resultMap="heritageReplyResultMap"/>
+		<collection property="images" columnPrefix="I_" 
+        resultMap="heritageImageResultMap"/>
+	</resultMap>
+	
+	<!-- MySQL의 페이징 기능을 활용한 코드 -->
+	<select id="selectHeritageList" resultMap="heritageListResultMap" parameterType="map">
+		SELECT  
+			*
+		FROM HERITAGE
+		WHERE 1=1 
+		<if test="kind != null">
+			AND ccmaName in
+			<foreach collection="kind" index="index" item="item" separator="," open="(" close=")">
+                #{item}
+			</foreach>  
+		</if>
+		<if test="region != null">
+			AND ccbaCtcdNm in
+			<foreach collection="region" index="index" item="item" separator="," open="(" close=")">
+                #{item}
+			</foreach>  
+		</if>
+		<if test="time != null">
+			AND ccceName in
+			<foreach collection="time" index="index" item="item" separator="," open="(" close=")">
+                #{item}
+			</foreach>  
+		</if>
+		<if test="type != null">
+			AND gcodeName in
+			<foreach collection="type" index="index" item="item" separator="," open="(" close=")">
+                #{item}
+			</foreach>  
+		</if>
+		<if test='name != null and nameType != "nameContent"'>
+			AND ccbaMnm1 LIKE '%${name}%' 
+		</if>		
+		<if test='name != null and nameType == "nameContent"'>
+			AND (content LIKE '%${name}%' OR ccbaMnm1 LIKE '%${name}%')
+		</if>	
+		ORDER BY H_NO DESC LIMIT ${limit} OFFSET ${offset}
+	</select>
+	
+	<select id="selectHeritageCount" resultType="int" parameterType="map">
+		SELECT  
+			COUNT(*)
+		FROM HERITAGE
+		WHERE 1=1
+		<if test="kind != null">
+			AND ccmaName in
+			<foreach collection="kind" item="item" separator="," open="(" close=")">
+                #{item}
+			</foreach>  
+		</if>
+		<if test="region != null">
+			AND ccbaCtcdNm in
+			<foreach collection="region" item="item" separator="," open="(" close=")">
+                #{item}
+			</foreach>  
+		</if>
+		<if test="time != null">
+			AND ccceName in
+			<foreach collection="time" item="item" separator="," open="(" close=")">
+                #{item}
+			</foreach>  
+		</if>
+		<if test="type != null">
+			AND gcodeName in
+			<foreach collection="type" item="item" separator="," open="(" close=")">
+                #{item}
+			</foreach>  
+		</if>	
+		<if test='name != null and nameType != "nameContent"'>
+			AND ccbaMnm1 LIKE '%${name}%' 
+		</if>		
+		<if test='name != null and nameType == "nameContent"'>
+			AND (content LIKE '%${name}%' OR ccbaMnm1 LIKE '%${name}%')
+		</if>	
+		
+	</select>
+	
+	<select id="selectHeritageByNo" parameterType="int" resultMap="heritageDetailResultMap">
+		SELECT  
+			H.H_NO, H.ccmaName, H.ccbaMnm1, H.gcodeName, H.bcodeName, H.mcodeName, 
+			H.scodeName, H.ccbaQuan, H.ccbaAsdt, H.ccbaCtcdNm, H.ccsiName, 
+			H.ccbaLcad, H.ccceName, H.ccbaPoss, H.longitude, H.latitude, H.ccbaAdmin, H.imageUrl, H.content,
+			R.HR_NO AS R_HR_NO, 
+		    R.H_NO AS R_H_NO, 
+		    R.U_NO AS R_U_NO, 
+		    R.HR_CONTENT AS R_HR_CONTENT, 
+		    M.NICKNAME AS R_NICKNAME,
+		    R.HR_CREATE_DATE  AS R_HR_CREATE_DATE, 
+		    R.HR_MODIFY_DATE  AS R_HR_MODIFY_DATE,
+		    I.ImageUrl1 AS I_ImageUrl1,
+		    I.ImageUrl2 AS I_ImageUrl2,
+		    I.ImageUrl3 AS I_ImageUrl3,
+		    I.ImageUrl4 AS I_ImageUrl4, 
+		    I.CcimDesc1 AS I_CcimDesc1,
+		    I.CcimDesc2 AS I_CcimDesc2,
+		    I.CcimDesc3 AS I_CcimDesc3,
+		    I.CcimDesc4 AS I_CcimDesc4
+		FROM HERITAGE H
+        LEFT OUTER JOIN HERITAGE_RE R ON (H.H_NO = R.H_NO)
+        LEFT OUTER JOIN USER M ON (R.U_NO = M.U_NO)
+		LEFT OUTER JOIN HERITAGE_IMAGE I ON (H.H_NO = I.HI_NO)
+		WHERE H.H_NO = #{hno}
+		<!-- JOIN MEMBER M ON(B.WRITER_NO = M.NO)
+		LEFT OUTER JOIN REPLY R ON (B.NO = R.BOARD_NO)
+		LEFT OUTER JOIN MEMBER M2 ON (R.WRITER_NO = M2.NO) -->
+	</select>
+	
+	<insert id="insertCollection" parameterType="AddCollection">
+		INSERT INTO COLLECTION_INPUT_H(U_NO, H_NO) 
+		VALUES(1, #{hno})
+	</insert>
+	
+	<!-- 랜덤 리스트 -->
+	<select id="selectHeritageRandomList" resultMap="heritageListResultMap">
+		SELECT *
+		FROM HERITAGE
+		ORDER BY RAND() LIMIT 5;
+	</select>
+	
+		<delete id="deleteCollection" parameterType="AddCollection">
+		delete from COLLECTION_INPUT_H WHERE U_NO=1 AND H_NO=#{hno}
+	</delete>
+	
+	<!-- 좋아요 추가 -->
+	<insert id="insertHeritageLike" parameterType="AddHeritageLike">
+		INSERT INTO HERITAGE_LIKE(U_NO, H_NO) 
+		VALUES(#{uno}, #{hno})
+	</insert>
+	
+	<!-- 리플 작성 -->
+	<insert id="insertReply" parameterType="HReply">
+		INSERT INTO HERITAGE_RE(
+				HR_NO, H_NO, U_NO, 
+				HR_CONTENT, HR_CREATE_DATE, HR_MODIFY_DATE, HR_STATUS)
+			VALUES(
+				0, #{hno}, #{uno}, #{hrContent}, 
+				DEFAULT, DEFAULT, DEFAULT
+			)
+	</insert>
+		<!-- 리플 작성 -->
+	<insert id="insertReply2" parameterType="CoReply">
+		INSERT INTO COLLECTION_RE(
+				HR_NO, H_NO, U_NO, 
+				HR_CONTENT, HR_CREATE_DATE, HR_MODIFY_DATE, HR_STATUS)
+			VALUES(
+				0, #{hno}, #{uno}, #{hrContent}, 
+				DEFAULT, DEFAULT, DEFAULT
+			)
+	</insert>
+	
+	<!-- 좋아요 개수 체크 -->
+	<select id="selectHeritageLikeCount" resultType="int" parameterType="map">
+		SELECT  
+			COUNT(*)
+		FROM HERITAGE_LIKE
+		WHERE H_NO = #{hno}
+	</select>
+	
+	<!-- 리플 삭제 -->
+	<delete id="deleteReply" parameterType="int">
+		DELETE FROM HERITAGE_RE WHERE HR_NO=#{hrno}
+	</delete>
+	
+	
+	<select id="selectCollectionListByUNO" parameterType="int" resultMap="heritageListResultMap">
+		SELECT C.U_NO, C.H_NO, H.ccmaName, H.ccbaMnm1, H.ccbaCtcdNm, H.ccsiName, H.ccceName, H.imageUrl, M.NICKNAME
+		FROM COLLECTION_INPUT_H C, HERITAGE H, USER M WHERE C.H_NO = H.H_NO AND C.U_NO = M.U_NO AND C.U_NO = 1
+	</select>
+	<select id="selectCollectionList"  resultMap="heritageListResultMap">
+		select * from HERITAGE ORDER BY RAND() LIMIT 6;
+	</select>
+	
+	<select id="selectCoLists" resultMap="heritageReplyResultMap2">
+		select * from COLLECTION_RE;
+	</select>
+	
+</mapper>

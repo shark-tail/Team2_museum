@@ -105,8 +105,10 @@
       <!-- 댓글 입령창 -->
       <div class="card shadow-sm mb-4">
         <div class="card-body">
-          <form class="needs-validation" novalidate>
-            <textarea class="form-control mb-3" rows="3" placeholder="댓글 내용 입력..." style="resize: none; min-height: calc(7.5rem + 1.15rem + 2px);"></textarea>
+          <form action="${path}/Co_reply" class="needs-validation" novalidate  method="post">
+          <input type="hidden" name="uno" value="0"/>
+            <textarea name="hrContent" id="replyContent" class="form-control mb-3" rows="3" placeholder="댓글 내용 입력..."
+             style="resize: none; min-height: calc(7.5rem + 1.15rem + 2px);"></textarea>
             <div class="d-flex justify-content-end">
               <button class="btn btn-primary btn-lg rounded-pill fs-sm" type="submit"><i class="fi-pencil me-2"></i>댓글 등록</button>
             </div>
@@ -116,25 +118,35 @@
       
       <!-- 댓글 목록 -->
       <!-- item 1 -->
-      <div class="mb-4 p-4 border-bottom">
-        <div class="d-flex justify-content-between mb-3">
-          <div class="d-flex align-items-center pe-2"><img class="rounded-circle me-3" src="${path}/resources/img/avatars/06.jpg" width="48" alt="Avatar">
-            <h6 class="fs-base mb-0">작성자 닉네임</h6><span class="star-rating"></span>
-          </div><span class="text-muted fs-base">2022.12.21</span>
-        </div>
-        <p>Elementum ut quam tincidunt egestas vitae elit, hendrerit. Ullamcorper nulla amet lobortis elit, nibh condimentum enim. Aliquam felis nisl tellus sodales lectus dictum tristique proin vitae. Odio fermentum viverra tortor quis.</p>
-        <div class="d-flex justify-content-end align-items-center">
-          <button class="btn btn-primary rounded-pill" type="button"><i class="fi-edit me-2"></i>수정</button>
-          <div class="border-end mx-2"></div>
-          <button class="btn btn-primary rounded-pill" type="button"><i class="fi-trash me-2"></i>삭제</button>
-        </div>
-      </div>
+       <!-- 리뷰 리스트 -->
+        <div class="col-md-bih2">
+          <span class="fs-5 fw-bold ps-3">리뷰</span>
+          <div class="" style="margin-top: 30px;">
+         <c:if test="${!empty replyList}">
+          <c:forEach var="reply" items="${replyList}">
+            <div class="mb-3 pb-1 border-bottom ps-3">
+              <div class="d-flex justify-content-between mb-3 ps-2">
+                <div class="d-flex align-items-center pe-2"><img class="rounded-circle me-1" src="${path}/resources/img/avatars/13.png"
+                    width="48" alt="Avatar">
+                  <div class="ps-2">
+                    <h6 class="fs-5 mb-0">${reply.nickName}</h6>
+                  </div>
+                </div>
+                <span class="text-muted fs-sm">${reply.hrCreateDate}
+                <c:if test="${ !empty loginMember && (loginMember.no == reply.uno || loginMember.role == 'ROLE_ADMIN') }">
+				<button class="btn-delete" onclick="deleteReply('${reply.hrno}','${reply.hno}');" >삭제</button>
+				</c:if>
+                <%-- <i class="text-danger ms-2 fi-trash mt-n1" style="cursor:pointer;" onclick="deleteReply('${reply.hrno}','${reply.hno}');"></i> --%>
+                </span>
+              </div>
+              <p>${reply.hrContent}</p>
+            </div>
+            </c:forEach>
+           </c:if>
       
       
       <!-- 댓글 더 보기 버튼 -->
-      <div class="d-flex justify-content-center mt-5 mb-5">
-        <button class="more-reply" type="button">더 보기</button>
-      </div>
+      
     </section>
   </main>
 
