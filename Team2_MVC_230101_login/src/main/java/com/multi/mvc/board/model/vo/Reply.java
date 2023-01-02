@@ -14,6 +14,7 @@ public class Reply {
 	private int boardNo;
 	private int writerNo;
 	private String writerId;
+	private String nickname; // 닉네임
 	private String content;	
 	private Date createDate;
 	private Date modifyDate;
