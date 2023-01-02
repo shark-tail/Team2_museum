@@ -14,6 +14,7 @@ public class Board {
 	private int no;
 	private int writerNo;
 	private String writerId;
+	private String nickname;
 	private String title;
 	private String content;
 	private String originalFileName;
