@@ -32,3 +32,16 @@
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
+
+#search-collection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+}
+#search-collection .radio-group {
+    margin-right: 1rem;
+}
+#search-collection .radio-group label {
+    margin-right: 0.5rem;
+}
