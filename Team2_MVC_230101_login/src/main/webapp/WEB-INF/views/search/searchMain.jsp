@@ -594,24 +594,63 @@
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 <script src="${path}/resources/js/vendor/leaflet.js"></script>
 <script src="${path}/resources/js/vendor/nouislider.min.js"></script>
-<script src="${path}/resources/js/search-main.js"></script>
 
 <script type="text/javascript">
 function movePage(pageUrl){
 	//http://localhost/mvc/searchMain?name=%EC%84%9C%EC%9A%B8&nameType=nameContent&kind=%EA%B5%AD%EB%B3%B4&region=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C
 	
-	var name = document.getElementById("name"); // 갤럭시
-	var nameTypes = document.getElementsByName("nameType"); // title
-	var nameType = 'name';
-	if(name.value.length > 0){
+	var name = document.getElementById("name"); // 입력창
+	var nameTypes = document.getElementsByName("nameType"); // 라디오버튼 부분
+	var nameType = 'name'; // 더해줄값 담는곳
+	
+	//if 제거로 입력없이, 체크박스없이 검색가능
+	//if(name.value.length > 0){ //getElementById("name")이 부분이 입력창 부분. // 입력값이 있다면=if
 		for(var i = 0; i <nameTypes.length; i++){
 			if(nameTypes[i].checked == true){
 				nameType = nameTypes[i].value;
 			}
 		}
 		pageUrl = pageUrl + '&nameType=' + nameType + '&name=' + name.value; 
-	}
+	
+	var kinds = document.getElementsByName("kind"); // 체크박스 부분. 배열
+	var kind = null;// 더해줄값 담는곳
+	var regions = document.getElementsByName("region");
+	var region = 'region';
+	var times = document.getElementsByName("time");
+	var time = 'time';
+	var types = document.getElementsByName("type");
+	var type = 'type';
+
+		for(var i = 0; i < kinds.length; i++){
+			if(kinds[i].checked == true){
+				kind = '&kind=' + kinds[i].value;
+				pageUrl += kind;
+			}
+		}
+
+		for(var i = 0; i < regions.length; i++){
+			if(regions[i].checked == true){
+				region = '&region=' + regions[i].value;
+				pageUrl += region;
+			}
+		}
+		
+		for(var i = 0; i < times.length; i++){
+			if(times[i].checked == true){
+				time = '&time=' + times[i].value;
+				pageUrl += time;
+			}
+		}
+		
+		for(var i = 0; i < types.length; i++){
+			if(types[i].checked == true){
+				type = '&type=' + types[i].value;
+				pageUrl += type;
+			}
+		}
+
 	location.href = encodeURI(pageUrl);	
+
 }
 </script>
 </html>
