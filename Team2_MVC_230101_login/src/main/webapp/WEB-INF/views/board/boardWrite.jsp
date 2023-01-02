@@ -60,7 +60,7 @@
 		          <li><a href="${path}/board?type=notice">공지사항</a></li>
 		          <li><a href="${path}/board?type=free">자유게시판</a></li>
 		          <li><a href="${path}/board?type=question">질문게시판</a></li>
-		          <li><a href="${path}/board?type=customer">고객센터</a></li>
+		          <li><a href="${path}/board?type=customer">FAQ</a></li>
 		      	</ul>
 		      </div>
 	      
@@ -79,7 +79,7 @@
 								<input type="radio" name="type" value="question" ${type=='question' ? 'checked':''}> 질문게시판&nbsp;&nbsp;&nbsp;&nbsp;
 							</label>
 							<label>
-								<input type="radio" name="type" value="customer" ${type=='customer' ? 'checked':''}> 고객센터
+								<input type="radio" name="type" value="customer" ${type=='customer' ? 'checked':''}> FAQ
 							</label>
 						</div>
 		
@@ -88,7 +88,7 @@
 							<p>제목</p><input type="text" name="title" placeholder="글의 제목을 적는 곳입니다.">
 						</div>
 						<div class="boder-wrting-ttl" >
-							<p>작성자</p><input type="text" name="writerId" value="${loginMember.id}" readonly>
+							<p>작성자</p><input type="text" name="writerId" value="${loginMember.nickname}" readonly>
 						</div>
 						<div class="boder-wrting-ttl" >
 						  <p>첨부파일</p><input type="file" name="upfile">
