@@ -57,6 +57,19 @@
 }
 .col-top-img {
   width: 100% !important;
-  height: 220px !important;
+  height: 300px !important;
   object-fit: cover;
+}
+
+#search-collection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+}
+#search-collection .radio-group {
+    margin-right: 1rem;
+}
+#search-collection .radio-group label {
+    margin-right: 0.5rem;
 }
