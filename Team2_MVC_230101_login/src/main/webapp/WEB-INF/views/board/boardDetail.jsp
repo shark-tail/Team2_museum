@@ -64,7 +64,7 @@
 		          <li><a href="${path}/board?type=notice">공지사항</a></li>
 		          <li><a href="${path}/board?type=free">자유게시판</a></li>
 		          <li><a href="${path}/board?type=question">질문게시판</a></li>
-		          <li><a href="${path}/board?type=customer">고객센터</a></li>
+		          <li><a href="${path}/board?type=customer"FAQ</a></li>
 		      	</ul>
 		      </div>
 	      
@@ -76,7 +76,7 @@
 	          <div class="detail_text-ttl">글 번호</div>
 	          <div class="detail_text-no"><c:out value="${board.no}"/></div>
 	          <div class="detail_text-ttl">작성자</div>
-	          <div class="detail_text-writer"><c:out value="${board.writerId}"/></div>
+	          <div class="detail_text-writer"><c:out value="${board.nickname}"/></div>
 	          <div class="detail_text-ttl">조회수</div>
 	          <div class="detail_text-readCount"><c:out value="${board.readCount}"/></div>
 	          <div class="detail_text-ttl">작성 시간</div>
@@ -115,48 +115,48 @@
 	        	</c:if>
 	        </div>
 	        
-	        
-	        <!-- 댓글 입력 -->
-	        <form action="${path}/board-reply" method="post" class="board-detail-comment">
-	          <div class="board-detail-comment-name">댓글 내용 입력</div>
-	          <input type="hidden" name="boardNo" value="${board.no}" />
-			    	<input type="hidden" name="writerId" value="${loginMember.id}" />
-	          <div class="board-detail-comment-area"><textarea name="content" cols="210" rows="10"></textarea></div>
-	          <div style="text-align: right;"><button type="submit" class="board-detail-comment-enroll">댓글 등록</button></div>
-	        </form>
-	        
-	        <!-- 댓글 목록 -->
-	        <table id="reply-container">
-						<c:if test="${!empty replyList}">
-							<c:forEach var="reply" items="${replyList}">
+	        <c:if test="${param.type != 'customer'}">
+			<!-- 댓글 입력 -->
+			<form action="${path}/board-reply" method="post" class="board-detail-comment">
+			  <div class="board-detail-comment-name">댓글 내용 입력</div>
+			  <input type="hidden" name="boardNo" value="${board.no}" />
+					<input type="hidden" name="writerId" value="${loginMember.id}" />
+			  <div class="board-detail-comment-area"><textarea name="content" cols="210" rows="10"></textarea></div>
+			  <div style="text-align: right;"><button type="submit" class="board-detail-comment-enroll">댓글 등록</button></div>
+			</form>
+
+			<!-- 댓글 목록 -->
+			<table id="reply-container">
+							<c:if test="${!empty replyList}">
+								<c:forEach var="reply" items="${replyList}">
+									<tr>
+										<td class="reply-header">
+											<div class="user-info"><img src="${path}/resources/img/avatars/01.jpg"/><sub>${reply.writerId}</sub></div>
+											<sub class="reply-date"><fmt:formatDate type="both" value="${reply.createDate}"/></sub>
+										</td>
+									</tr>
+									<tr>
+										<td class="reply-main">
+											<div class="reply-content"><c:out value="${reply.content}"/></div>
+										</td>
+									</tr>
+									<tr>
+										<td class="reply-footer">
+											<c:if test="${ !empty loginMember && (loginMember.id == reply.writerId 	|| loginMember.role == 'ROLE_ADMIN') }">
+												<div><button class="btn-delete" onclick="deleteReply('${reply.no}','${board.no}');" >삭제</button></div>
+											</c:if>
+										</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+
+							<c:if test="${empty replyList}">
 								<tr>
-									<td class="reply-header">
-										<div class="user-info"><img src="${path}/resources/img/avatars/01.jpg"/><sub>${reply.writerId}</sub></div>
-										<sub class="reply-date"><fmt:formatDate type="both" value="${reply.createDate}"/></sub>
-									</td>
+									<td colspan="3" style="text-align: center;">등록된 리플이 없습니다.</td>
 								</tr>
-								<tr>
-									<td class="reply-main">
-										<div class="reply-content"><c:out value="${reply.content}"/></div>
-									</td>
-								</tr>
-								<tr>
-									<td class="reply-footer">
-										<c:if test="${ !empty loginMember && (loginMember.id == reply.writerId 	|| loginMember.role == 'ROLE_ADMIN') }">
-											<div><button class="btn-delete" onclick="deleteReply('${reply.no}','${board.no}');" >삭제</button></div>
-										</c:if>
-									</td>
-								</tr>
-							</c:forEach>
-						</c:if>
-						
-						<c:if test="${empty replyList}">
-							<tr>
-								<td colspan="3" style="text-align: center;">등록된 리플이 없습니다.</td>
-							</tr>
-						</c:if>
-					</table>
-	        
+							</c:if>
+						</table>
+	        	</c:if>
 	        
 	      </div>
 	  	</div>
