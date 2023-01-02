@@ -16,6 +16,7 @@
 		<result property="status" column="STATUS"/>
 		<result property="createDate" column="CREATE_DATE"/>
 		<result property="modifyDate" column="MODIFY_DATE"/>
+		<result property="nickname" column="NICKNAME"/>
 		
 		<result property="writerId" column="ID"/>
 	</resultMap>
@@ -28,6 +29,7 @@
 		<result property="createDate" 	column="BR_CREATE_DATE"/>
 		<result property="modifyDate" 	column="BR_MODIFY_DATE"/>
 		<result property="status" column="BR_STATUS"/>
+		<result property="nickname" column="NICKNAME"/>
 		
 		<result property="writerId" 	column="ID"/>
 	</resultMap>
@@ -40,7 +42,7 @@
 	<!-- MySQL의 페이징 기능을 활용한 코드 -->
 	<select id="selectBoardList1" resultMap="boardListResultMap" parameterType="map">
 		SELECT  
-			B.B_NO, B.TITLE, M.ID, B.CREATE_DATE, B.ORIGINAL_FILENAME, B.READCOUNT, B.STATUS
+			B.B_NO, B.TITLE, M.NICKNAME, M.ID, B.CREATE_DATE, B.ORIGINAL_FILENAME, B.READCOUNT, B.STATUS
 		FROM BOARD B JOIN USER M ON(B.U_NO = M.U_NO) 
 		WHERE B.STATUS = 'Y'
 		<if test="writer != null">
@@ -79,18 +81,19 @@
 	
 	<select id="selectBoardByNo" parameterType="int" resultMap="boardDetailResultMap">
 		SELECT  
-			B.B_NO, B.TITLE, M.ID, B.READCOUNT, B.TYPE, B.ORIGINAL_FILENAME, B.RENAMED_FILENAME, B.CONTENT, B.CREATE_DATE, B.MODIFY_DATE,
+			B.B_NO, B.TITLE, M2.NICKNAME, M2.ID, B.READCOUNT, B.TYPE, B.ORIGINAL_FILENAME, B.RENAMED_FILENAME, B.CONTENT, B.CREATE_DATE, B.MODIFY_DATE,
 			R.BR_NO AS R_BR_NO, 
 	    R.B_NO AS R_B_NO, 
 	    R.BR_CONTENT  AS R_BR_CONTENT, 
-	    M2.ID  AS R_ID, 
+	    M.NICKNAME  AS R_NICKNAME,
+      M.ID AS R_ID, 
 	    R.BR_CREATE_DATE  AS R_BR_CREATE_DATE, 
 	    R.BR_MODIFY_DATE  AS R_BR_MODIFY_DATE,
 	    R.BR_STATUS AS R_BR_STATUS
 		FROM BOARD B
-		JOIN USER M ON(B.U_NO = M.U_NO)
+		JOIN USER M2 ON(B.U_NO = M2.U_NO)
 		LEFT OUTER JOIN BOARD_RE R ON (B.B_NO = R.B_NO)
-		LEFT OUTER JOIN USER M2 ON (R.U_NO = M2.U_NO)
+		LEFT OUTER JOIN USER M ON (R.U_NO = M.U_NO)
 		WHERE B.STATUS = 'Y' AND B.B_NO = #{no}
 	</select>
 	
