@@ -36,7 +36,7 @@
       <div class="colltection-title content-overlay">
         <h1 class="mb-5 text-white">전이만갑오개혁님의 컬렉션</h1>
         <div class="btn-group d-flex justify-content-between">
-          <a class="btn btn-primary btn-sm rounded-pill" href="/mvc/collection_view" role="button">전체모드로 보기</a>
+          <a class="btn btn-primary btn-sm rounded-pill" href="${path}/ex-collection-view-all-1" role="button">전체모드로 보기</a>
         </div>
     </section>
 
