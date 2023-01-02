@@ -1,3 +1,5 @@
+@import url(common.css);
+
 li{
   list-style: none;
 }
@@ -141,8 +143,8 @@ element.style {
 }
 
 .board-content{
-  border-top: var(--clr-beige) solid 1px; 
-  border-bottom: var(--clr-beige) solid 1px; 
+  border-top: 1px solid var(--clr-beige); 
+  border-bottom: 1px solid var(--clr-beige); 
 }
 table {
   font-size: 25px;
@@ -307,12 +309,10 @@ textarea{
   text-align: left;
 }
 .board-detail-context{
-  margin-left: 2em;
-  margin-right: 2em;
+  margin: 0.5em;
   border-top: 3px  solid var(--clr-beige);
   border-bottom: 3px  solid var(--clr-beige);
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding: 0.5em;
 }
 
 .board-detail-list-like-modify{
