@@ -76,7 +76,7 @@
 		          <li><a href="${path}/board?type=notice">공지사항</a></li>
 		          <li><a href="${path}/board?type=free">자유게시판</a></li>
 		          <li><a href="${path}/board?type=question">질문게시판</a></li>
-		          <li><a href="${path}/board?type=customer">고객센터</a></li>
+		          <li><a href="${path}/board?type=customer">FAQ</a></li>
 		      	</ul>
 		      </div>
 		      
@@ -123,7 +123,7 @@
 										<tr class="board-content">
 											<td class="td-no text-center"><c:out value="${board.no}"/></td>
 											<td class="td-ttl text-center"><a href="${path}/board-detail?no=${board.no}"><c:out value="${board.title}"/></a></td>
-											<td class="td-wrter text-center"><c:out value="${board.writerId}"/></td>
+											<td class="td-wrter text-center"><c:out value="${board.nickname}"/></td>
 											<td class="td-reg text-center"><fmt:formatDate type="date" value="${board.createDate}"/> </td>
 											<td class="td-look text-center"><c:out value="${board.readCount}"/></td>
 										</tr>
@@ -135,9 +135,12 @@
 		      
 					<!-- 게시글 작성 -->				
 		      <div class="create-board">
-		      	<c:if test="${loginMember != null}">
-		      	<span><button type="button" onclick="location.href='${path}/board-write?type=${param.type}'">작성하기</button></span>
-		      	</c:if>
+		      	<c:if test="${loginMember.role == 'ROLE_ADMIN'}">
+      				<span><button type="button" onclick="location.href='${path}/board-write?type=${param.type}'">작성하기</button></span>
+	      		</c:if>
+	      		<c:if test="${loginMember.role == 'ROLE_USER' && (param.type == 'free' || param.type == 'question')}">
+      				<span><button type="button" onclick="location.href='${path}/board-write?type=${param.type}'">작성하기</button></span>
+	      		</c:if>
 		      </div>
 			    
 	
