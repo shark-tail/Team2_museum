@@ -20,9 +20,9 @@ public class MyCollectionController {
 	@Autowired
 	HeritageService service;
 
-	@RequestMapping("/collection")
+	@RequestMapping("/Collection")
 	public String Collection() {
-		return "collection/collection-main";
+		return"collection/ex-collection-main-1";
 	}
 
 	@RequestMapping("/collection-detail")
