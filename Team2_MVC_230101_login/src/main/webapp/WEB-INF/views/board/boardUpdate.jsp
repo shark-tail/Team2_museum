@@ -61,7 +61,7 @@
 		          <li><a href="${path}/board?type=best">베스트게시판</a></li>
 		          <li><a href="${path}/board?type=free">자유게시판</a></li>
 		          <li><a href="${path}/board?type=question">질문게시판</a></li>
-		          <li><a href="${path}/board?type=customer">고객센터</a></li>
+		          <li><a href="${path}/board?type=customer">FAQ</a></li>
 		      	</ul>
 		      </div>
 	      
@@ -76,7 +76,7 @@
 		          <div class="detail_text-ttl">제목</div>
 		          <div class="detail_text-content"><input type="text" name="title" value="${board.title}"></div>
 		          <div class="detail_text-ttl">작성자</div>
-		          <div class="detail_text-writer"><input type="text" name="writerId" value="${board.writerId}" readonly></div>
+		          <div class="detail_text-writer"><input type="text" name="writerId" value="${board.nickname}" readonly></div>
 		        </div>
 		        <div class="board-detail_ttl">
 		        <div class="detail_text-ttl">첨부파일</div>
