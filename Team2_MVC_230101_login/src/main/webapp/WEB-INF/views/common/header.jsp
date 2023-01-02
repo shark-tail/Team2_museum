@@ -87,7 +87,7 @@
 							<li><a class="dropdown-item"
 								href="${path}/board?type=question">질문게시판</a></li>
 							<li><a class="dropdown-item"
-								href="${path}/board?type=customer">고객센터</a></li>
+								href="${path}/board?type=customer">FAQ</a></li>
 						</ul></li>
 				</ul>
 			</div>
