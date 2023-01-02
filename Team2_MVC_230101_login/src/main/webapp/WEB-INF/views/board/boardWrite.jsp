@@ -45,8 +45,8 @@
     <jsp:include page="../common/header.jsp"/>
 
     <section class="jarallax bg-dark main-section" data-jarallax data-speed="0.5">
-      <span class="img-overlay bg-transparent opacity-75" style="background-image: linear-gradient(0deg, rgba(31, 27, 45, .7), rgba(31, 27, 45, .7));"></span>
-      <div class="jarallax-img img-main" style="background-image: url(${path}/resources/img/경복궁_근정전_내부_어좌.jpg);"></div>
+      <span class="img-overlay bg-transparent" ></span>
+      <div class="jarallax-img img-main" style="background-image: url(${path}/resources/img/45sdf1.jpg);"></div>
     </section>
     
     <!-- 게시글 시작 -->

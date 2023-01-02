@@ -45,8 +45,8 @@
     <jsp:include page="../common/header.jsp"/>
 
     <section class="jarallax bg-dark main-section" data-jarallax data-speed="0.5">
-      <span class="img-overlay bg-transparent opacity-75" style="background-image: linear-gradient(0deg, rgba(31, 27, 45, .7), rgba(31, 27, 45, .7));"></span>
-      <div class="jarallax-img img-main" style="background-image: url(${path}/resources/img/경복궁_근정전_내부_어좌.jpg);"></div>
+      <span class="img-overlay bg-transparent "></span>
+      <div class="jarallax-img img-main" style="background-image: url(${path}/resources/img/753458.jpg);"></div>
     </section>
     
    	<!-- 게시판시작 -->
@@ -103,7 +103,7 @@
 		          <thead>
 		            <tr class="board-tr">
 	                <th class="board-no" >번호</th>
-	                <th class="board-ttl">제목</th>
+	                <th class="board-ttl s">제목</th>
 	                <th class="board-writer">작성자</th>
 	                <th class="board-reg">등록일</th>
 	                <th class="board-look">조회</th>
@@ -122,7 +122,7 @@
 									
 										<tr class="board-content">
 											<td class="td-no text-center"><c:out value="${board.no}"/></td>
-											<td class="td-ttl text-center"><a href="${path}/board-detail?no=${board.no}"><c:out value="${board.title}"/></a></td>
+											<td class="td-ttl text-start"><a href="${path}/board-detail?no=${board.no}"><c:out value="${board.title}"/></a></td>
 											<td class="td-wrter text-center"><c:out value="${board.nickname}"/></td>
 											<td class="td-reg text-center"><fmt:formatDate type="date" value="${board.createDate}"/> </td>
 											<td class="td-look text-center"><c:out value="${board.readCount}"/></td>
@@ -136,10 +136,10 @@
 					<!-- 게시글 작성 -->				
 		      <div class="create-board">
 		      	<c:if test="${loginMember.role == 'ROLE_ADMIN'}">
-      				<span><button type="button" onclick="location.href='${path}/board-write?type=${param.type}'">작성하기</button></span>
+      				<button type="button" class="btn btn-outline-primary rounded-pill mb-3 me-2" onclick="location.href='${path}/board-write?type=${param.type}'">작성하기</button>
 	      		</c:if>
 	      		<c:if test="${loginMember.role == 'ROLE_USER' && (param.type == 'free' || param.type == 'question')}">
-      				<span><button type="button" onclick="location.href='${path}/board-write?type=${param.type}'">작성하기</button></span>
+      				<button type="button"  class="btn btn-outline-primary rounded-pill mb-3 me-2" onclick="location.href='${path}/board-write?type=${param.type}'">작성하기</button>
 	      		</c:if>
 		      </div>
 			    
