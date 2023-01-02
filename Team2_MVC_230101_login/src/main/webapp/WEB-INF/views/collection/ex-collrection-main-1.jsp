@@ -1,12 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<c:set var="path" value="${pageContext.request.contextPath}" />
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
@@ -56,12 +48,14 @@
               <label><input type="radio" name="searchType" value="nickname" checked/>닉네임</label>
               <label><input type="radio" name="searchType" value="heritage" />문화재</label>
             </div>
-            <form class="bg-white d-flex position-relative rounded-md-pill p-1 col-sch-form" style="border: 1px solid rgba(126, 126, 126, 0.521);">
+            <form action="${path}/ex-collection-list" class="bg-white d-flex position-relative rounded-md-pill p-1 col-sch-form" style="border: 1px solid rgba(126, 126, 126, 0.521);">
               <div class="input-group input-group-lg ">
                 <span class="input-group-text text-muted rounded-pill border-0 ms-3 p-1 "><i class="fi-search"></i></span>
-                <input class="form-control border-0 ms-3 p-1 col-sch-input" type="text" placeholder="컬렉션 입력">
+                <input class="form-control border-0 ms-3 p-1 col-sch-input" type="text" name="searchValue" placeholder="컬렉션 검색..." value="${param.searchValue}">
               </div>
-              <div class="d-sm-flex"><button class="btn btn-primary btn-lg rounded-pill w-100 w-md-auto ms-sm-3 col-sch-btn px-4 py-0" type="button">검색하기</button></div>
+              <div class="d-sm-flex">
+              	<button class="btn btn-primary btn-lg rounded-pill w-100 w-md-auto ms-sm-3 col-sch-btn px-4 py-0" type="button">검색하기</button>
+              </div>
             </form>
           </div>
         </div>
@@ -87,7 +81,7 @@
               <img class="rounded-4" src="${path}/resources/img/ex/베스트컬렉션1.jpg">
             </div>
             <h3 class="h4 mb-2">
-              <a class="nav-link stretched-link text-center" href="collection-detail.html">백범힝구님의 컬렉션</a>
+              <a class="nav-link stretched-link text-center" href="${path}/ex-collection-detail-1">백범힝구님의 컬렉션</a>
             </h3>
           </div>
           <!-- item 2-->
